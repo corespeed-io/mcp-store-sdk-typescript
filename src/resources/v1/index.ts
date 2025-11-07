@@ -8,6 +8,7 @@ export {
 export {
   Servers,
   type Argument,
+  type Input,
   type KeyValueInput,
   type Package,
   type Remote,

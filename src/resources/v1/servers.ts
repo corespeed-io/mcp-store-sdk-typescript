@@ -73,7 +73,7 @@ export interface Argument {
 
   name?: string;
 
-  properties?: { [key: string]: Argument.Properties };
+  properties?: { [key: string]: Input };
 
   template?: string;
 
@@ -81,49 +81,27 @@ export interface Argument {
 
   valueHint?: string;
 
-  variables?: { [key: string]: Argument.Variables };
+  variables?: { [key: string]: Input };
 }
 
-export namespace Argument {
-  export interface Properties {
-    choices?: Array<string>;
+export interface Input {
+  choices?: Array<string>;
 
-    default?: string;
+  default?: string;
 
-    description?: string;
+  description?: string;
 
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
+  format?: 'string' | 'number' | 'boolean' | 'file_path';
 
-    isRequired?: boolean;
+  isRequired?: boolean;
 
-    isSecret?: boolean;
+  isSecret?: boolean;
 
-    properties?: { [key: string]: unknown };
+  properties?: { [key: string]: Input };
 
-    template?: string;
+  template?: string;
 
-    value?: string;
-  }
-
-  export interface Variables {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
+  value?: string;
 }
 
 export interface KeyValueInput {
@@ -141,55 +119,13 @@ export interface KeyValueInput {
 
   isSecret?: boolean;
 
-  properties?: { [key: string]: KeyValueInput.Properties };
+  properties?: { [key: string]: Input };
 
   template?: string;
 
   value?: string;
 
-  variables?: { [key: string]: KeyValueInput.Variables };
-}
-
-export namespace KeyValueInput {
-  export interface Properties {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
-
-  export interface Variables {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
+  variables?: { [key: string]: Input };
 }
 
 export interface Package {
@@ -352,6 +288,7 @@ export interface ServerListParams {
 export declare namespace Servers {
   export {
     type Argument as Argument,
+    type Input as Input,
     type KeyValueInput as KeyValueInput,
     type Package as Package,
     type Remote as Remote,

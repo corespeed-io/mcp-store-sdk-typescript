@@ -6,6 +6,7 @@ import { Documentation, DocumentationProxyParams, DocumentationProxyResponse } f
 import * as ServersAPI from './servers';
 import {
   Argument,
+  Input,
   KeyValueInput,
   Package,
   Remote,
@@ -56,6 +57,7 @@ export declare namespace V1 {
   export {
     Servers as Servers,
     type Argument as Argument,
+    type Input as Input,
     type KeyValueInput as KeyValueInput,
     type Package as Package,
     type Remote as Remote,

@@ -23,6 +23,7 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/v1/servers.ts">Argument</a></code>
+- <code><a href="./src/resources/v1/servers.ts">Input</a></code>
 - <code><a href="./src/resources/v1/servers.ts">KeyValueInput</a></code>
 - <code><a href="./src/resources/v1/servers.ts">Package</a></code>
 - <code><a href="./src/resources/v1/servers.ts">Remote</a></code>
