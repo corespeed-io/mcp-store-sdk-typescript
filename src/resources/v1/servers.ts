@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
+import { OffsetPage, type OffsetPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -41,8 +42,8 @@ export class Servers extends APIResource {
   list(
     query: ServerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<ServerListResponse> {
-    return this._client.get('/api/v1/servers', { query, ...options });
+  ): PagePromise<ServerDetailsOffsetPage, ServerDetail> {
+    return this._client.getAPIList('/api/v1/servers', OffsetPage<ServerDetail>, { query, ...options });
   }
 
   /**
@@ -53,6 +54,8 @@ export class Servers extends APIResource {
     return this._client.delete(path`/api/v1/servers/${id}`, options);
   }
 }
+
+export type ServerDetailsOffsetPage = OffsetPage<ServerDetail>;
 
 export interface Argument {
   type: 'positional' | 'named';
@@ -73,7 +76,7 @@ export interface Argument {
 
   name?: string;
 
-  properties?: { [key: string]: Argument.Properties };
+  properties?: { [key: string]: Input };
 
   template?: string;
 
@@ -81,49 +84,27 @@ export interface Argument {
 
   valueHint?: string;
 
-  variables?: { [key: string]: Argument.Variables };
+  variables?: { [key: string]: Input };
 }
 
-export namespace Argument {
-  export interface Properties {
-    choices?: Array<string>;
+export interface Input {
+  choices?: Array<string>;
 
-    default?: string;
+  default?: string;
 
-    description?: string;
+  description?: string;
 
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
+  format?: 'string' | 'number' | 'boolean' | 'file_path';
 
-    isRequired?: boolean;
+  isRequired?: boolean;
 
-    isSecret?: boolean;
+  isSecret?: boolean;
 
-    properties?: { [key: string]: unknown };
+  properties?: { [key: string]: Input };
 
-    template?: string;
+  template?: string;
 
-    value?: string;
-  }
-
-  export interface Variables {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
+  value?: string;
 }
 
 export interface KeyValueInput {
@@ -141,55 +122,13 @@ export interface KeyValueInput {
 
   isSecret?: boolean;
 
-  properties?: { [key: string]: KeyValueInput.Properties };
+  properties?: { [key: string]: Input };
 
   template?: string;
 
   value?: string;
 
-  variables?: { [key: string]: KeyValueInput.Variables };
-}
-
-export namespace KeyValueInput {
-  export interface Properties {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
-
-  export interface Variables {
-    choices?: Array<string>;
-
-    default?: string;
-
-    description?: string;
-
-    format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-    isRequired?: boolean;
-
-    isSecret?: boolean;
-
-    properties?: { [key: string]: unknown };
-
-    template?: string;
-
-    value?: string;
-  }
+  variables?: { [key: string]: Input };
 }
 
 export interface Package {
@@ -256,30 +195,6 @@ export interface VersionDetail {
   version: string;
 }
 
-export interface ServerListResponse {
-  /**
-   * Number of servers returned in this response
-   */
-  count: number;
-
-  data: Array<ServerDetail>;
-
-  /**
-   * Maximum number of servers requested
-   */
-  limit: number;
-
-  /**
-   * Number of servers skipped
-   */
-  offset: number;
-
-  /**
-   * Total number of servers available
-   */
-  total: number;
-}
-
 export interface ServerDeleteResponse {
   message: string;
 }
@@ -327,17 +242,7 @@ export interface ServerUpdateParams {
   versionDetail?: VersionDetail;
 }
 
-export interface ServerListParams {
-  /**
-   * Maximum number of servers to return
-   */
-  limit?: number;
-
-  /**
-   * Number of servers to skip for pagination
-   */
-  offset?: number;
-
+export interface ServerListParams extends OffsetPageParams {
   /**
    * Search term to filter servers by name or description
    */
@@ -352,6 +257,7 @@ export interface ServerListParams {
 export declare namespace Servers {
   export {
     type Argument as Argument,
+    type Input as Input,
     type KeyValueInput as KeyValueInput,
     type Package as Package,
     type Remote as Remote,
@@ -359,8 +265,8 @@ export declare namespace Servers {
     type ServerDetail as ServerDetail,
     type ServerResponse as ServerResponse,
     type VersionDetail as VersionDetail,
-    type ServerListResponse as ServerListResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
+    type ServerDetailsOffsetPage as ServerDetailsOffsetPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,

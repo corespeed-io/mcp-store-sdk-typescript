@@ -6,6 +6,7 @@ import { Documentation, DocumentationProxyParams, DocumentationProxyResponse } f
 import * as ServersAPI from './servers';
 import {
   Argument,
+  Input,
   KeyValueInput,
   Package,
   Remote,
@@ -13,8 +14,8 @@ import {
   ServerCreateParams,
   ServerDeleteResponse,
   ServerDetail,
+  ServerDetailsOffsetPage,
   ServerListParams,
-  ServerListResponse,
   ServerResponse,
   ServerUpdateParams,
   Servers,
@@ -56,6 +57,7 @@ export declare namespace V1 {
   export {
     Servers as Servers,
     type Argument as Argument,
+    type Input as Input,
     type KeyValueInput as KeyValueInput,
     type Package as Package,
     type Remote as Remote,
@@ -63,8 +65,8 @@ export declare namespace V1 {
     type ServerDetail as ServerDetail,
     type ServerResponse as ServerResponse,
     type VersionDetail as VersionDetail,
-    type ServerListResponse as ServerListResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
+    type ServerDetailsOffsetPage as ServerDetailsOffsetPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,

@@ -8,6 +8,7 @@ export {
 export {
   Servers,
   type Argument,
+  type Input,
   type KeyValueInput,
   type Package,
   type Remote,
@@ -15,10 +16,10 @@ export {
   type ServerDetail,
   type ServerResponse,
   type VersionDetail,
-  type ServerListResponse,
   type ServerDeleteResponse,
   type ServerCreateParams,
   type ServerUpdateParams,
   type ServerListParams,
+  type ServerDetailsOffsetPage,
 } from './servers';
 export { V1, type V1CheckHealthResponse } from './v1';
