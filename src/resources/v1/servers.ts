@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
+import { OffsetPage, type OffsetPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -41,8 +42,8 @@ export class Servers extends APIResource {
   list(
     query: ServerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<ServerListResponse> {
-    return this._client.get('/api/v1/servers', { query, ...options });
+  ): PagePromise<ServerDetailsOffsetPage, ServerDetail> {
+    return this._client.getAPIList('/api/v1/servers', OffsetPage<ServerDetail>, { query, ...options });
   }
 
   /**
@@ -53,6 +54,8 @@ export class Servers extends APIResource {
     return this._client.delete(path`/api/v1/servers/${id}`, options);
   }
 }
+
+export type ServerDetailsOffsetPage = OffsetPage<ServerDetail>;
 
 export interface Argument {
   type: 'positional' | 'named';
@@ -192,30 +195,6 @@ export interface VersionDetail {
   version: string;
 }
 
-export interface ServerListResponse {
-  /**
-   * Number of servers returned in this response
-   */
-  count: number;
-
-  data: Array<ServerDetail>;
-
-  /**
-   * Maximum number of servers requested
-   */
-  limit: number;
-
-  /**
-   * Number of servers skipped
-   */
-  offset: number;
-
-  /**
-   * Total number of servers available
-   */
-  total: number;
-}
-
 export interface ServerDeleteResponse {
   message: string;
 }
@@ -263,17 +242,7 @@ export interface ServerUpdateParams {
   versionDetail?: VersionDetail;
 }
 
-export interface ServerListParams {
-  /**
-   * Maximum number of servers to return
-   */
-  limit?: number;
-
-  /**
-   * Number of servers to skip for pagination
-   */
-  offset?: number;
-
+export interface ServerListParams extends OffsetPageParams {
   /**
    * Search term to filter servers by name or description
    */
@@ -296,8 +265,8 @@ export declare namespace Servers {
     type ServerDetail as ServerDetail,
     type ServerResponse as ServerResponse,
     type VersionDetail as VersionDetail,
-    type ServerListResponse as ServerListResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
+    type ServerDetailsOffsetPage as ServerDetailsOffsetPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,

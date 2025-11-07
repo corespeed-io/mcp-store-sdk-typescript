@@ -1,6 +1,6 @@
 # Mcp Store SDK TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/mcp-store-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-sdk)
+[![NPM version](<https://img.shields.io/npm/v/mcp-store-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-sdk) [![JSR Version](https://jsr.io/badges/mcp-store-sdk)](https://jsr.io/mcp-store-sdk)
 
 This library provides convenient access to the Mcp Store SDK REST API from server-side TypeScript or JavaScript.
 
@@ -16,6 +16,21 @@ npm install git+ssh://git@github.com:CoreSpeed-io/mcp-store-sdk-typescript.git
 
 > [!NOTE]
 > Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install mcp-store-sdk`
+
+### Installation from JSR
+
+```sh
+deno add jsr:mcp-store-sdk
+npx jsr add mcp-store-sdk
+```
+
+These commands will make the module importable from the `mcp-store-sdk` scope:
+
+You can also [import directly from JSR](https://jsr.io/docs/using-packages#importing-with-jsr-specifiers) without an install step if you're using the Deno JavaScript runtime:
+
+```ts
+import McpStoreSDK from 'jsr:mcp-store-sdk';
+```
 
 ## Usage
 
@@ -315,7 +330,7 @@ const client = new McpStoreSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import McpStoreSDK from 'npm:mcp-store-sdk';
+import McpStoreSDK from 'jsr:mcp-store-sdk';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
 const client = new McpStoreSDK({
