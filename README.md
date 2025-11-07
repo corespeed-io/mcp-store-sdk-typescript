@@ -1,6 +1,6 @@
 # Mcp Store SDK TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/mcp-store-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-sdk) [![JSR Version](https://jsr.io/badges/mcp-store-sdk)](https://jsr.io/mcp-store-sdk)
+[![NPM version](<https://img.shields.io/npm/v/mcp-store-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-sdk) [![JSR Version](https://jsr.io/badges/@corespeed/mcp-store-client)](https://jsr.io/@corespeed/mcp-store-client)
 
 This library provides convenient access to the Mcp Store SDK REST API from server-side TypeScript or JavaScript.
 
@@ -20,16 +20,16 @@ npm install git+ssh://git@github.com:CoreSpeed-io/mcp-store-sdk-typescript.git
 ### Installation from JSR
 
 ```sh
-deno add jsr:mcp-store-sdk
-npx jsr add mcp-store-sdk
+deno add jsr:@corespeed/mcp-store-client
+npx jsr add @corespeed/mcp-store-client
 ```
 
-These commands will make the module importable from the `mcp-store-sdk` scope:
+These commands will make the module importable from the `@corespeed/mcp-store-client` scope:
 
 You can also [import directly from JSR](https://jsr.io/docs/using-packages#importing-with-jsr-specifiers) without an install step if you're using the Deno JavaScript runtime:
 
 ```ts
-import McpStoreSDK from 'jsr:mcp-store-sdk';
+import McpStoreSDK from 'jsr:@corespeed/mcp-store-client';
 ```
 
 ## Usage
@@ -141,6 +141,37 @@ await client.v1.checkHealth({
 On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
+
+## Auto-pagination
+
+List methods in the McpStoreSDK API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllServerDetails(params) {
+  const allServerDetails = [];
+  // Automatically fetches more pages as needed.
+  for await (const serverDetail of client.v1.servers.list({ limit: 10 })) {
+    allServerDetails.push(serverDetail);
+  }
+  return allServerDetails;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.v1.servers.list({ limit: 10 });
+for (const serverDetail of page.data) {
+  console.log(serverDetail);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
 
 ## Advanced Usage
 
@@ -330,7 +361,7 @@ const client = new McpStoreSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import McpStoreSDK from 'jsr:mcp-store-sdk';
+import McpStoreSDK from 'jsr:@corespeed/mcp-store-client';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
 const client = new McpStoreSDK({
