@@ -11,8 +11,11 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install mcp-store-sdk
+npm install git+ssh://git@github.com:corespeed-io/mcp-store-sdk-typescript.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install mcp-store-sdk`
 
 ### Installation from JSR
 
