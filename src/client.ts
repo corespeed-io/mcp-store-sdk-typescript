@@ -14,7 +14,7 @@ import * as Opts from './internal/request-options';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Pagination from './core/pagination';
-import { AbstractPage, type OffsetPageParams, OffsetPageResponse } from './core/pagination';
+import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
@@ -767,8 +767,8 @@ McpStoreSDK.V1 = V1;
 export declare namespace McpStoreSDK {
   export type RequestOptions = Opts.RequestOptions;
 
-  export import OffsetPage = Pagination.OffsetPage;
-  export { type OffsetPageParams as OffsetPageParams, type OffsetPageResponse as OffsetPageResponse };
+  export import CursorPage = Pagination.CursorPage;
+  export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
 
   export { V1 as V1, type V1CheckHealthResponse as V1CheckHealthResponse };
 }

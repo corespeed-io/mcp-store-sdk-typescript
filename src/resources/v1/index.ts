@@ -13,13 +13,16 @@ export {
   type Package,
   type Remote,
   type Repository,
+  type ServerCreate,
   type ServerDetail,
   type ServerResponse,
-  type VersionDetail,
+  type ServerUpdate,
+  type ServerListResponse,
   type ServerDeleteResponse,
   type ServerCreateParams,
   type ServerUpdateParams,
   type ServerListParams,
-  type ServerDetailsOffsetPage,
+  type ServerRetrieveByPackageParams,
+  type ServerListResponsesCursorPage,
 } from './servers';
 export { V1, type V1CheckHealthResponse } from './v1';
