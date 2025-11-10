@@ -1,6 +1,6 @@
 {
   "name": "mcp-store-sdk",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The official TypeScript library for the Mcp Store SDK API",
   "author": "Mcp Store SDK <>",
   "types": "dist/index.d.ts",
