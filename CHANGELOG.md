@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0 (2025-11-10)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** add endpoint for get server with slug & update pagination ([c6913cb](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/c6913cbcd8ce2660d5777df26a42d1eb6304893c))
+* **api:** update new api end point and pagination ([73e672a](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/73e672ae01f80d4095de60692f0d4cc97086a1e1))
+
 ## 1.3.0 (2025-11-10)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.2.0...v1.3.0)
