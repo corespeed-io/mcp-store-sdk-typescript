@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0 (2025-11-10)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** disable npm publish ([1bb2970](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/1bb2970de460b99537cb2275faa9192b0305f8ab))
+
+
+### Chores
+
+* update SDK settings ([cc0fe81](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/cc0fe81b6e09c3073bbb9209c61faa4902b3df4f))
+
 ## 1.2.0 (2025-11-07)
 
 Full Changelog: [v0.0.1...v1.2.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v0.0.1...v1.2.0)
