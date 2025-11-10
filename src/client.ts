@@ -771,4 +771,17 @@ export declare namespace McpStoreSDK {
   export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
 
   export { V1 as V1, type V1CheckHealthResponse as V1CheckHealthResponse };
+
+  export type Argument = API.Argument;
+  export type Input = API.Input;
+  export type KeyValueInput = API.KeyValueInput;
+  export type Package = API.Package;
+  export type Remote = API.Remote;
+  export type Repository = API.Repository;
+  export type Server = API.Server;
+  export type ServerCreate = API.ServerCreate;
+  export type ServerDetail = API.ServerDetail;
+  export type ServerListResponse = API.ServerListResponse;
+  export type ServerResponse = API.ServerResponse;
+  export type ServerUpdate = API.ServerUpdate;
 }
