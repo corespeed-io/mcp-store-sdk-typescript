@@ -113,7 +113,7 @@ export interface CursorPageResponse<Item> {
   /**
    * Next page cursor
    */
-  next: string;
+  next: string | null;
 }
 
 export interface CursorPageParams {
@@ -121,6 +121,11 @@ export interface CursorPageParams {
    * Cursor for pagination
    */
   cursor?: string;
+
+  /**
+   * Maximum number of servers to return
+   */
+  limit?: number;
 }
 
 export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageResponse<Item> {
@@ -129,7 +134,7 @@ export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageRe
   /**
    * Next page cursor
    */
-  next: string;
+  next: string | null;
 
   constructor(
     client: McpStoreSDK,
@@ -140,7 +145,7 @@ export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageRe
     super(client, response, body, options);
 
     this.servers = body.servers || [];
-    this.next = body.next || '';
+    this.next = body.next || null;
   }
 
   getPaginatedItems(): Item[] {
