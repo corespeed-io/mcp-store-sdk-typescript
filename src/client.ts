@@ -25,12 +25,19 @@ import {
 } from './resources/documentation';
 import { Health, HealthCheckResponse } from './resources/health';
 import {
+  Server,
   ServerCreateParams,
+  ServerCreateResponse,
   ServerDeleteResponse,
+  ServerDetail,
   ServerListParams,
   ServerRetrieveByPackageParams,
+  ServerRetrieveByPackageResponse,
+  ServerRetrieveResponse,
   ServerUpdateParams,
+  ServerUpdateResponse,
   Servers,
+  ServersCursorPage,
 } from './resources/servers';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
@@ -797,7 +804,14 @@ export declare namespace McpStoreSDK {
 
   export {
     Servers as Servers,
+    type Server as Server,
+    type ServerDetail as ServerDetail,
+    type ServerCreateResponse as ServerCreateResponse,
+    type ServerRetrieveResponse as ServerRetrieveResponse,
+    type ServerUpdateResponse as ServerUpdateResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
+    type ServerRetrieveByPackageResponse as ServerRetrieveByPackageResponse,
+    type ServersCursorPage as ServersCursorPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,
@@ -810,10 +824,4 @@ export declare namespace McpStoreSDK {
   export type Package = API.Package;
   export type Remote = API.Remote;
   export type Repository = API.Repository;
-  export type Server = API.Server;
-  export type ServerCreate = API.ServerCreate;
-  export type ServerDetail = API.ServerDetail;
-  export type ServerListResponse = API.ServerListResponse;
-  export type ServerResponse = API.ServerResponse;
-  export type ServerUpdate = API.ServerUpdate;
 }

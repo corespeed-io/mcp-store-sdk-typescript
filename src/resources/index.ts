@@ -9,9 +9,16 @@ export {
 export { Health, type HealthCheckResponse } from './health';
 export {
   Servers,
+  type Server,
+  type ServerDetail,
+  type ServerCreateResponse,
+  type ServerRetrieveResponse,
+  type ServerUpdateResponse,
   type ServerDeleteResponse,
+  type ServerRetrieveByPackageResponse,
   type ServerCreateParams,
   type ServerUpdateParams,
   type ServerListParams,
   type ServerRetrieveByPackageParams,
+  type ServersCursorPage,
 } from './servers';

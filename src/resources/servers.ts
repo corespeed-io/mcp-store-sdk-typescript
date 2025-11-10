@@ -2,7 +2,6 @@
 
 import { APIResource } from '../core/resource';
 import * as Shared from './shared';
-import { ServersCursorPage } from './shared';
 import { APIPromise } from '../core/api-promise';
 import { CursorPage, type CursorPageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -14,15 +13,14 @@ export class Servers extends APIResource {
    * from the external URL and upload it to R2 storage. The response will contain the
    * R2 URL.
    */
-  create(params: ServerCreateParams, options?: RequestOptions): APIPromise<Shared.ServerResponse> {
-    const { server } = params;
-    return this._client.post('/api/v1/servers', { body: server, ...options });
+  create(body: ServerCreateParams, options?: RequestOptions): APIPromise<ServerCreateResponse> {
+    return this._client.post('/api/v1/servers', { body, ...options });
   }
 
   /**
    * Retrieve detailed information about a specific MCP server
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<Shared.ServerResponse> {
+  retrieve(id: string, options?: RequestOptions): APIPromise<ServerRetrieveResponse> {
     return this._client.get(path`/api/v1/servers/${id}`, options);
   }
 
@@ -33,11 +31,10 @@ export class Servers extends APIResource {
    */
   update(
     id: string,
-    params: ServerUpdateParams | null | undefined = undefined,
+    body: ServerUpdateParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<Shared.ServerResponse> {
-    const { server } = params ?? {};
-    return this._client.put(path`/api/v1/servers/${id}`, { body: server, ...options });
+  ): APIPromise<ServerUpdateResponse> {
+    return this._client.put(path`/api/v1/servers/${id}`, { body, ...options });
   }
 
   /**
@@ -46,8 +43,8 @@ export class Servers extends APIResource {
   list(
     query: ServerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): PagePromise<ServersCursorPage, Shared.Server> {
-    return this._client.getAPIList('/api/v1/servers', CursorPage<Shared.Server>, { query, ...options });
+  ): PagePromise<ServersCursorPage, Server> {
+    return this._client.getAPIList('/api/v1/servers', CursorPage<Server>, { query, ...options });
   }
 
   /**
@@ -66,30 +63,181 @@ export class Servers extends APIResource {
     packageName: string,
     params: ServerRetrieveByPackageParams,
     options?: RequestOptions,
-  ): APIPromise<Shared.ServerResponse> {
+  ): APIPromise<ServerRetrieveByPackageResponse> {
     const { scope } = params;
     return this._client.get(path`/api/v1/servers/${scope}/${packageName}`, options);
   }
+}
+
+export type ServersCursorPage = CursorPage<Server>;
+
+export interface Server {
+  id: string;
+
+  description: string;
+
+  displayName: string;
+
+  packageName: string;
+
+  repository: Shared.Repository;
+
+  scope: string;
+
+  updatedAt: string;
+
+  version: string;
+
+  documentationUrl?: string;
+
+  iconUrl?: string;
+}
+
+export interface ServerDetail {
+  id: string;
+
+  description: string;
+
+  displayName: string;
+
+  packageName: string;
+
+  repository: Shared.Repository;
+
+  scope: string;
+
+  updatedAt: string;
+
+  version: string;
+
+  documentationUrl?: string;
+
+  iconUrl?: string;
+
+  packages?: Array<Shared.Package>;
+
+  remotes?: Array<Shared.Remote>;
+}
+
+export interface ServerCreateResponse {
+  server: ServerDetail;
+}
+
+export interface ServerRetrieveResponse {
+  server: ServerDetail;
+}
+
+export interface ServerUpdateResponse {
+  server: ServerDetail;
 }
 
 export interface ServerDeleteResponse {
   message: string;
 }
 
+export interface ServerRetrieveByPackageResponse {
+  server: ServerDetail;
+}
+
 export interface ServerCreateParams {
-  server: Shared.ServerCreate;
+  /**
+   * Description of the MCP server
+   */
+  description: string;
+
+  /**
+   * The display name of the MCP server
+   */
+  displayName: string;
+
+  /**
+   * The package name of the MCP server
+   */
+  packageName: string;
+
+  repository: Shared.Repository;
+
+  /**
+   * The scope of the MCP server
+   */
+  scope: string;
+
+  /**
+   * Version of the MCP server
+   */
+  version: string;
+
+  /**
+   * URL to the documentation
+   */
+  documentationUrl?: string;
+
+  /**
+   * External icon URL (will be fetched and stored in R2)
+   */
+  iconUrl?: string;
+
+  /**
+   * Package configurations
+   */
+  packages?: Array<Shared.Package>;
+
+  /**
+   * Remote configurations
+   */
+  remotes?: Array<Shared.Remote>;
 }
 
 export interface ServerUpdateParams {
-  server?: Shared.ServerUpdate;
+  /**
+   * Description of the MCP server
+   */
+  description?: string;
+
+  /**
+   * The display name of the MCP server
+   */
+  displayName?: string;
+
+  /**
+   * URL to the documentation
+   */
+  documentationUrl?: string;
+
+  /**
+   * External icon URL (will be fetched and stored in R2, replacing old icon)
+   */
+  iconUrl?: string;
+
+  /**
+   * The package name of the MCP server
+   */
+  packageName?: string;
+
+  /**
+   * Package configurations
+   */
+  packages?: Array<Shared.Package>;
+
+  /**
+   * Remote configurations
+   */
+  remotes?: Array<Shared.Remote>;
+
+  repository?: Shared.Repository;
+
+  /**
+   * The scope of the MCP server
+   */
+  scope?: string;
+
+  /**
+   * Version of the MCP server
+   */
+  version?: string;
 }
 
 export interface ServerListParams extends CursorPageParams {
-  /**
-   * Maximum number of servers to return
-   */
-  limit?: number;
-
   /**
    * Search term to filter servers by name or description
    */
@@ -111,12 +259,17 @@ export interface ServerRetrieveByPackageParams {
 
 export declare namespace Servers {
   export {
+    type Server as Server,
+    type ServerDetail as ServerDetail,
+    type ServerCreateResponse as ServerCreateResponse,
+    type ServerRetrieveResponse as ServerRetrieveResponse,
+    type ServerUpdateResponse as ServerUpdateResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
+    type ServerRetrieveByPackageResponse as ServerRetrieveByPackageResponse,
+    type ServersCursorPage as ServersCursorPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,
     type ServerRetrieveByPackageParams as ServerRetrieveByPackageParams,
   };
 }
-
-export { type ServersCursorPage };
