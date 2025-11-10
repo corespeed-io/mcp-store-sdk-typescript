@@ -5,24 +5,11 @@ import * as DocumentationAPI from './documentation';
 import { Documentation, DocumentationProxyParams, DocumentationProxyResponse } from './documentation';
 import * as ServersAPI from './servers';
 import {
-  Argument,
-  Input,
-  KeyValueInput,
-  Package,
-  Remote,
-  Repository,
   ServerCreateParams,
-  ServerCreateResponse,
   ServerDeleteResponse,
-  ServerDetail,
   ServerListParams,
-  ServerListResponse,
-  ServerListResponsesCursorPage,
   ServerRetrieveByPackageParams,
-  ServerRetrieveByPackageResponse,
-  ServerRetrieveResponse,
   ServerUpdateParams,
-  ServerUpdateResponse,
   Servers,
 } from './servers';
 import { APIPromise } from '../../core/api-promise';
@@ -60,20 +47,7 @@ export declare namespace V1 {
 
   export {
     Servers as Servers,
-    type Argument as Argument,
-    type Input as Input,
-    type KeyValueInput as KeyValueInput,
-    type Package as Package,
-    type Remote as Remote,
-    type Repository as Repository,
-    type ServerDetail as ServerDetail,
-    type ServerCreateResponse as ServerCreateResponse,
-    type ServerRetrieveResponse as ServerRetrieveResponse,
-    type ServerUpdateResponse as ServerUpdateResponse,
-    type ServerListResponse as ServerListResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
-    type ServerRetrieveByPackageResponse as ServerRetrieveByPackageResponse,
-    type ServerListResponsesCursorPage as ServerListResponsesCursorPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,
