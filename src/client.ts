@@ -18,7 +18,22 @@ import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { V1, V1CheckHealthResponse } from './resources/v1/v1';
+import {
+  Argument,
+  Input,
+  KeyValueInput,
+  Package,
+  Remote,
+  Repository,
+  Server,
+  ServerCreate,
+  ServerDetail,
+  ServerListResponse,
+  ServerResponse,
+  ServerUpdate,
+  V1,
+  V1CheckHealthResponse,
+} from './resources/v1/v1';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -770,5 +785,20 @@ export declare namespace McpStoreSDK {
   export import CursorPage = Pagination.CursorPage;
   export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
 
-  export { V1 as V1, type V1CheckHealthResponse as V1CheckHealthResponse };
+  export {
+    V1 as V1,
+    type Argument as Argument,
+    type Input as Input,
+    type KeyValueInput as KeyValueInput,
+    type Package as Package,
+    type Remote as Remote,
+    type Repository as Repository,
+    type Server as Server,
+    type ServerCreate as ServerCreate,
+    type ServerDetail as ServerDetail,
+    type ServerListResponse as ServerListResponse,
+    type ServerResponse as ServerResponse,
+    type ServerUpdate as ServerUpdate,
+    type V1CheckHealthResponse as V1CheckHealthResponse,
+  };
 }
