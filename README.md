@@ -146,13 +146,13 @@ List methods in the McpStoreSDK API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllServers(params) {
-  const allServers = [];
+async function fetchAllServerListResponses(params) {
+  const allServerListResponses = [];
   // Automatically fetches more pages as needed.
-  for await (const server of client.v1.servers.list({ limit: 12 })) {
-    allServers.push(server);
+  for await (const serverListResponse of client.v1.servers.list({ limit: 12 })) {
+    allServerListResponses.push(serverListResponse);
   }
-  return allServers;
+  return allServerListResponses;
 }
 ```
 
@@ -160,8 +160,8 @@ Alternatively, you can request a single page at a time:
 
 ```ts
 let page = await client.v1.servers.list({ limit: 12 });
-for (const server of page.servers) {
-  console.log(server);
+for (const serverListResponse of page.servers) {
+  console.log(serverListResponse);
 }
 
 // Convenience methods are provided for manually paginating:
