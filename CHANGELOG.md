@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1 (2025-11-10)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.4.0...v1.4.1)
+
+### Features
+
+* **api:** optimized type export ([8430314](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/8430314364ddbbde57ddcf13612bdf0960b0b2c6))
+
 ## 1.4.0 (2025-11-10)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.3.0...v1.4.0)
