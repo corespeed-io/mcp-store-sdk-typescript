@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 (2025-11-10)
+
+Full Changelog: [v1.6.2...v1.7.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.6.2...v1.7.0)
+
+### Features
+
+* **types:** expand type exports for servers, shared resources, documentation, and health checks ([17d0bc7](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/17d0bc73ac8f44c9db5356749d72362f5cda8d4d))
+
 ## 1.6.2 (2025-11-10)
 
 Full Changelog: [v1.6.1...v1.6.2](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.6.1...v1.6.2)
