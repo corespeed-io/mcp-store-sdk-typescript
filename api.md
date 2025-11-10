@@ -2,18 +2,6 @@
 
 Types:
 
-- <code><a href="./src/resources/v1/v1.ts">Argument</a></code>
-- <code><a href="./src/resources/v1/v1.ts">Input</a></code>
-- <code><a href="./src/resources/v1/v1.ts">KeyValueInput</a></code>
-- <code><a href="./src/resources/v1/v1.ts">Package</a></code>
-- <code><a href="./src/resources/v1/v1.ts">Remote</a></code>
-- <code><a href="./src/resources/v1/v1.ts">Repository</a></code>
-- <code><a href="./src/resources/v1/v1.ts">Server</a></code>
-- <code><a href="./src/resources/v1/v1.ts">ServerCreate</a></code>
-- <code><a href="./src/resources/v1/v1.ts">ServerDetail</a></code>
-- <code><a href="./src/resources/v1/v1.ts">ServerListResponse</a></code>
-- <code><a href="./src/resources/v1/v1.ts">ServerResponse</a></code>
-- <code><a href="./src/resources/v1/v1.ts">ServerUpdate</a></code>
 - <code><a href="./src/resources/v1/v1.ts">V1CheckHealthResponse</a></code>
 
 Methods:
@@ -34,13 +22,25 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/v1/servers.ts">Argument</a></code>
+- <code><a href="./src/resources/v1/servers.ts">Input</a></code>
+- <code><a href="./src/resources/v1/servers.ts">KeyValueInput</a></code>
+- <code><a href="./src/resources/v1/servers.ts">Package</a></code>
+- <code><a href="./src/resources/v1/servers.ts">Remote</a></code>
+- <code><a href="./src/resources/v1/servers.ts">Repository</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerDetail</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerCreateResponse</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerRetrieveResponse</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerUpdateResponse</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerListResponse</a></code>
 - <code><a href="./src/resources/v1/servers.ts">ServerDeleteResponse</a></code>
+- <code><a href="./src/resources/v1/servers.ts">ServerRetrieveByPackageResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/servers">client.v1.servers.<a href="./src/resources/v1/servers.ts">create</a>({ ...params }) -> ServerResponse</code>
-- <code title="get /api/v1/servers/{id}">client.v1.servers.<a href="./src/resources/v1/servers.ts">retrieve</a>(id) -> ServerResponse</code>
-- <code title="put /api/v1/servers/{id}">client.v1.servers.<a href="./src/resources/v1/servers.ts">update</a>(id, { ...params }) -> ServerResponse</code>
-- <code title="get /api/v1/servers">client.v1.servers.<a href="./src/resources/v1/servers.ts">list</a>({ ...params }) -> ServersCursorPage</code>
+- <code title="post /api/v1/servers">client.v1.servers.<a href="./src/resources/v1/servers.ts">create</a>({ ...params }) -> ServerCreateResponse</code>
+- <code title="get /api/v1/servers/{id}">client.v1.servers.<a href="./src/resources/v1/servers.ts">retrieve</a>(id) -> ServerRetrieveResponse</code>
+- <code title="put /api/v1/servers/{id}">client.v1.servers.<a href="./src/resources/v1/servers.ts">update</a>(id, { ...params }) -> ServerUpdateResponse</code>
+- <code title="get /api/v1/servers">client.v1.servers.<a href="./src/resources/v1/servers.ts">list</a>({ ...params }) -> ServerListResponsesCursorPage</code>
 - <code title="delete /api/v1/servers/{id}">client.v1.servers.<a href="./src/resources/v1/servers.ts">delete</a>(id) -> ServerDeleteResponse</code>
-- <code title="get /api/v1/servers/{scope}/{packageName}">client.v1.servers.<a href="./src/resources/v1/servers.ts">retrieveByPackage</a>(packageName, { ...params }) -> ServerResponse</code>
+- <code title="get /api/v1/servers/{scope}/{packageName}">client.v1.servers.<a href="./src/resources/v1/servers.ts">retrieveByPackage</a>(packageName, { ...params }) -> ServerRetrieveByPackageResponse</code>
