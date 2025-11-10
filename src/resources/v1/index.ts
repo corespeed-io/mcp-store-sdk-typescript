@@ -7,6 +7,13 @@ export {
 } from './documentation';
 export {
   Servers,
+  type Argument,
+  type Input,
+  type KeyValueInput,
+  type Package,
+  type Remote,
+  type Repository,
+  type ServerDetail,
   type ServerCreateResponse,
   type ServerRetrieveResponse,
   type ServerUpdateResponse,
