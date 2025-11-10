@@ -41,7 +41,6 @@ The full API of this library can be found in [api.md](api.md).
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
@@ -59,7 +58,6 @@ This library includes TypeScript definitions for all request params and response
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
@@ -148,22 +146,22 @@ List methods in the McpStoreSDK API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllServerDetails(params) {
-  const allServerDetails = [];
+async function fetchAllServerListResponses(params) {
+  const allServerListResponses = [];
   // Automatically fetches more pages as needed.
-  for await (const serverDetail of client.v1.servers.list({ limit: 10 })) {
-    allServerDetails.push(serverDetail);
+  for await (const serverListResponse of client.v1.servers.list({ limit: 12 })) {
+    allServerListResponses.push(serverListResponse);
   }
-  return allServerDetails;
+  return allServerListResponses;
 }
 ```
 
 Alternatively, you can request a single page at a time:
 
 ```ts
-let page = await client.v1.servers.list({ limit: 10 });
-for (const serverDetail of page.data) {
-  console.log(serverDetail);
+let page = await client.v1.servers.list({ limit: 12 });
+for (const serverListResponse of page.servers) {
+  console.log(serverListResponse);
 }
 
 // Convenience methods are provided for manually paginating:

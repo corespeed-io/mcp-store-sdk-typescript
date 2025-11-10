@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
-import { OffsetPage, type OffsetPageParams, PagePromise } from '../../core/pagination';
+import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -12,8 +12,9 @@ export class Servers extends APIResource {
    * from the external URL and upload it to R2 storage. The response will contain the
    * R2 URL.
    */
-  create(body: ServerCreateParams, options?: RequestOptions): APIPromise<ServerResponse> {
-    return this._client.post('/api/v1/servers', { body, ...options });
+  create(params: ServerCreateParams, options?: RequestOptions): APIPromise<ServerResponse> {
+    const { server } = params;
+    return this._client.post('/api/v1/servers', { body: server, ...options });
   }
 
   /**
@@ -30,20 +31,21 @@ export class Servers extends APIResource {
    */
   update(
     id: string,
-    body: ServerUpdateParams | null | undefined = {},
+    params: ServerUpdateParams | null | undefined = undefined,
     options?: RequestOptions,
   ): APIPromise<ServerResponse> {
-    return this._client.put(path`/api/v1/servers/${id}`, { body, ...options });
+    const { server } = params ?? {};
+    return this._client.put(path`/api/v1/servers/${id}`, { body: server, ...options });
   }
 
   /**
-   * Retrieve a paginated list of available MCP servers
+   * Retrieve paginated list of MCP servers with cursor-based pagination
    */
   list(
     query: ServerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): PagePromise<ServerDetailsOffsetPage, ServerDetail> {
-    return this._client.getAPIList('/api/v1/servers', OffsetPage<ServerDetail>, { query, ...options });
+  ): PagePromise<ServerListResponsesCursorPage, ServerListResponse> {
+    return this._client.getAPIList('/api/v1/servers', CursorPage<ServerListResponse>, { query, ...options });
   }
 
   /**
@@ -53,9 +55,22 @@ export class Servers extends APIResource {
   delete(id: string, options?: RequestOptions): APIPromise<ServerDeleteResponse> {
     return this._client.delete(path`/api/v1/servers/${id}`, options);
   }
+
+  /**
+   * Retrieve detailed information about a specific MCP server using its scope and
+   * package name
+   */
+  retrieveByPackage(
+    packageName: string,
+    params: ServerRetrieveByPackageParams,
+    options?: RequestOptions,
+  ): APIPromise<ServerResponse> {
+    const { scope } = params;
+    return this._client.get(path`/api/v1/servers/${scope}/${packageName}`, options);
+  }
 }
 
-export type ServerDetailsOffsetPage = OffsetPage<ServerDetail>;
+export type ServerListResponsesCursorPage = CursorPage<ServerListResponse>;
 
 export interface Argument {
   type: 'positional' | 'named';
@@ -156,11 +171,58 @@ export interface Remote {
 }
 
 export interface Repository {
-  id: string;
-
   source: string;
 
   url: string;
+}
+
+export interface ServerCreate {
+  /**
+   * Description of the MCP server
+   */
+  description: string;
+
+  /**
+   * The display name of the MCP server
+   */
+  displayName: string;
+
+  /**
+   * The package name of the MCP server
+   */
+  packageName: string;
+
+  repository: Repository;
+
+  /**
+   * The scope of the MCP server
+   */
+  scope: string;
+
+  /**
+   * Version of the MCP server
+   */
+  version: string;
+
+  /**
+   * URL to the documentation
+   */
+  documentationUrl?: string;
+
+  /**
+   * External icon URL (will be fetched and stored in R2)
+   */
+  iconUrl?: string;
+
+  /**
+   * Package configurations
+   */
+  packages?: Array<Package>;
+
+  /**
+   * Remote configurations
+   */
+  remotes?: Array<Remote>;
 }
 
 export interface ServerDetail {
@@ -168,11 +230,17 @@ export interface ServerDetail {
 
   description: string;
 
-  name: string;
+  displayName: string;
+
+  packageName: string;
 
   repository: Repository;
 
-  versionDetail: VersionDetail;
+  scope: string;
+
+  updatedAt: string;
+
+  version: string;
 
   documentationUrl?: string;
 
@@ -187,12 +255,75 @@ export interface ServerResponse {
   server: ServerDetail;
 }
 
-export interface VersionDetail {
-  isLatest: boolean;
+export interface ServerUpdate {
+  /**
+   * Description of the MCP server
+   */
+  description?: string;
 
-  releaseDate: string;
+  /**
+   * The display name of the MCP server
+   */
+  displayName?: string;
+
+  /**
+   * URL to the documentation
+   */
+  documentationUrl?: string;
+
+  /**
+   * External icon URL (will be fetched and stored in R2, replacing old icon)
+   */
+  iconUrl?: string;
+
+  /**
+   * The package name of the MCP server
+   */
+  packageName?: string;
+
+  /**
+   * Package configurations
+   */
+  packages?: Array<Package>;
+
+  /**
+   * Remote configurations
+   */
+  remotes?: Array<Remote>;
+
+  repository?: Repository;
+
+  /**
+   * The scope of the MCP server
+   */
+  scope?: string;
+
+  /**
+   * Version of the MCP server
+   */
+  version?: string;
+}
+
+export interface ServerListResponse {
+  id: string;
+
+  description: string;
+
+  displayName: string;
+
+  packageName: string;
+
+  repository: Repository;
+
+  scope: string;
+
+  updatedAt: string;
 
   version: string;
+
+  documentationUrl?: string;
+
+  iconUrl?: string;
 }
 
 export interface ServerDeleteResponse {
@@ -200,49 +331,19 @@ export interface ServerDeleteResponse {
 }
 
 export interface ServerCreateParams {
-  description: string;
-
-  name: string;
-
-  repository: Repository;
-
-  versionDetail: VersionDetail;
-
-  /**
-   * External icon URL. The server will fetch the icon from this URL and upload it to
-   * R2 storage. The response will contain the R2 URL.
-   */
-  iconUrl?: string;
-
-  packages?: Array<Package>;
-
-  remotes?: Array<Remote>;
+  server: ServerCreate;
 }
 
 export interface ServerUpdateParams {
-  description?: string;
-
-  documentationUrl?: string;
-
-  /**
-   * External icon URL. If provided, the server will fetch the icon from this URL,
-   * upload it to R2 storage, and delete the old icon. The response will contain the
-   * new R2 URL.
-   */
-  iconUrl?: string;
-
-  name?: string;
-
-  packages?: Array<Package>;
-
-  remotes?: Array<Remote>;
-
-  repository?: Repository;
-
-  versionDetail?: VersionDetail;
+  server?: ServerUpdate;
 }
 
-export interface ServerListParams extends OffsetPageParams {
+export interface ServerListParams extends CursorPageParams {
+  /**
+   * Maximum number of servers to return
+   */
+  limit?: number;
+
   /**
    * Search term to filter servers by name or description
    */
@@ -254,6 +355,14 @@ export interface ServerListParams extends OffsetPageParams {
   sort?: string;
 }
 
+export interface ServerRetrieveByPackageParams {
+  /**
+   * The scope of the MCP server (e.g., '@modelcontextprotocol', 'github'). The @
+   * symbol is optional and will be added automatically if not provided.
+   */
+  scope: string;
+}
+
 export declare namespace Servers {
   export {
     type Argument as Argument,
@@ -262,13 +371,16 @@ export declare namespace Servers {
     type Package as Package,
     type Remote as Remote,
     type Repository as Repository,
+    type ServerCreate as ServerCreate,
     type ServerDetail as ServerDetail,
     type ServerResponse as ServerResponse,
-    type VersionDetail as VersionDetail,
+    type ServerUpdate as ServerUpdate,
+    type ServerListResponse as ServerListResponse,
     type ServerDeleteResponse as ServerDeleteResponse,
-    type ServerDetailsOffsetPage as ServerDetailsOffsetPage,
+    type ServerListResponsesCursorPage as ServerListResponsesCursorPage,
     type ServerCreateParams as ServerCreateParams,
     type ServerUpdateParams as ServerUpdateParams,
     type ServerListParams as ServerListParams,
+    type ServerRetrieveByPackageParams as ServerRetrieveByPackageParams,
   };
 }

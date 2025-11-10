@@ -107,70 +107,58 @@ export class PagePromise<
   }
 }
 
-export interface OffsetPageResponse<Item> {
-  data: Array<Item>;
-
-  total: number;
-
-  offset: number;
-}
-
-export interface OffsetPageParams {
-  /**
-   * The number of elements to skip.
-   */
-  offset?: number;
+export interface CursorPageResponse<Item> {
+  servers: Array<Item>;
 
   /**
-   * The maximum number of elements to fetch.
+   * Next page cursor
    */
-  limit?: number;
+  next: string;
 }
 
-export class OffsetPage<Item> extends AbstractPage<Item> implements OffsetPageResponse<Item> {
-  data: Array<Item>;
+export interface CursorPageParams {
+  /**
+   * Cursor for pagination
+   */
+  cursor?: string;
+}
 
-  total: number;
+export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageResponse<Item> {
+  servers: Array<Item>;
 
-  offset: number;
+  /**
+   * Next page cursor
+   */
+  next: string;
 
   constructor(
     client: McpStoreSDK,
     response: Response,
-    body: OffsetPageResponse<Item>,
+    body: CursorPageResponse<Item>,
     options: FinalRequestOptions,
   ) {
     super(client, response, body, options);
 
-    this.data = body.data || [];
-    this.total = body.total || 0;
-    this.offset = body.offset || 0;
+    this.servers = body.servers || [];
+    this.next = body.next || '';
   }
 
   getPaginatedItems(): Item[] {
-    return this.data ?? [];
+    return this.servers ?? [];
   }
 
   nextPageRequestOptions(): PageRequestOptions | null {
-    const offset = this.offset ?? 0;
-    const length = this.getPaginatedItems().length;
-    const currentCount = offset + length;
-
-    const totalCount = this.total;
-    if (!totalCount) {
+    const cursor = this.next;
+    if (!cursor) {
       return null;
     }
 
-    if (currentCount < totalCount) {
-      return {
-        ...this.options,
-        query: {
-          ...maybeObj(this.options.query),
-          offset: currentCount,
-        },
-      };
-    }
-
-    return null;
+    return {
+      ...this.options,
+      query: {
+        ...maybeObj(this.options.query),
+        cursor,
+      },
+    };
   }
 }
