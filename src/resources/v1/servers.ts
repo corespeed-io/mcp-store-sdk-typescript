@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as ServersAPI from './servers';
 import { APIPromise } from '../../core/api-promise';
 import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
@@ -72,1036 +73,146 @@ export class Servers extends APIResource {
 
 export type ServerListResponsesCursorPage = CursorPage<ServerListResponse>;
 
-export interface ServerCreateResponse {
-  server: ServerCreateResponse.Server;
+export interface Argument {
+  type: 'positional' | 'named';
+
+  choices?: Array<string>;
+
+  default?: string;
+
+  description?: string;
+
+  format?: 'string' | 'number' | 'boolean' | 'file_path';
+
+  isRepeated?: boolean;
+
+  isRequired?: boolean;
+
+  isSecret?: boolean;
+
+  name?: string;
+
+  properties?: { [key: string]: Input };
+
+  template?: string;
+
+  value?: string;
+
+  valueHint?: string;
+
+  variables?: { [key: string]: Input };
 }
 
-export namespace ServerCreateResponse {
-  export interface Server {
-    id: string;
+export interface Input {
+  choices?: Array<string>;
 
-    description: string;
+  default?: string;
 
-    displayName: string;
+  description?: string;
 
-    packageName: string;
+  format?: 'string' | 'number' | 'boolean' | 'file_path';
 
-    repository: Server.Repository;
+  isRequired?: boolean;
 
-    scope: string;
+  isSecret?: boolean;
 
-    updatedAt: string;
+  properties?: { [key: string]: Input };
 
-    version: string;
+  template?: string;
 
-    documentationUrl?: string;
+  value?: string;
+}
 
-    iconUrl?: string;
+export interface KeyValueInput {
+  name: string;
 
-    packages?: Array<Server.Package>;
+  choices?: Array<string>;
 
-    remotes?: Array<Server.Remote>;
-  }
+  default?: string;
 
-  export namespace Server {
-    export interface Repository {
-      source: string;
+  description?: string;
 
-      url: string;
-    }
+  format?: 'string' | 'number' | 'boolean' | 'file_path';
 
-    export interface Package {
-      name: string;
+  isRequired?: boolean;
 
-      registryName: string;
+  isSecret?: boolean;
 
-      version: string;
+  properties?: { [key: string]: Input };
 
-      environmentVariables?: Array<Package.EnvironmentVariable>;
+  template?: string;
 
-      packageArguments?: Array<Package.PackageArgument>;
+  value?: string;
 
-      runtimeArguments?: Array<Package.RuntimeArgument>;
+  variables?: { [key: string]: Input };
+}
 
-      runtimeHint?: string;
-    }
+export interface Package {
+  name: string;
 
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
+  registryName: string;
 
-        choices?: Array<string>;
+  version: string;
 
-        default?: string;
+  environmentVariables?: Array<KeyValueInput>;
 
-        description?: string;
+  packageArguments?: Array<Argument>;
 
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
+  runtimeArguments?: Array<Argument>;
 
-        isRequired?: boolean;
+  runtimeHint?: string;
+}
 
-        isSecret?: boolean;
+export interface Remote {
+  transportType: string;
 
-        properties?: { [key: string]: EnvironmentVariable.Properties };
+  url: string;
 
-        template?: string;
+  headers?: Array<KeyValueInput>;
+}
 
-        value?: string;
+export interface Repository {
+  source: string;
 
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
+  url: string;
+}
 
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
+export interface ServerDetail {
+  id: string;
 
-          default?: string;
+  description: string;
 
-          description?: string;
+  displayName: string;
 
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
+  packageName: string;
 
-          isRequired?: boolean;
+  repository: Repository;
 
-          isSecret?: boolean;
+  scope: string;
 
-          properties?: { [key: string]: unknown };
+  updatedAt: string;
 
-          template?: string;
+  version: string;
 
-          value?: string;
-        }
+  documentationUrl?: string;
 
-        export interface Variables {
-          choices?: Array<string>;
+  iconUrl?: string;
 
-          default?: string;
+  packages?: Array<Package>;
 
-          description?: string;
+  remotes?: Array<Remote>;
+}
 
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-  }
+export interface ServerCreateResponse {
+  server: ServerDetail;
 }
 
 export interface ServerRetrieveResponse {
-  server: ServerRetrieveResponse.Server;
-}
-
-export namespace ServerRetrieveResponse {
-  export interface Server {
-    id: string;
-
-    description: string;
-
-    displayName: string;
-
-    packageName: string;
-
-    repository: Server.Repository;
-
-    scope: string;
-
-    updatedAt: string;
-
-    version: string;
-
-    documentationUrl?: string;
-
-    iconUrl?: string;
-
-    packages?: Array<Server.Package>;
-
-    remotes?: Array<Server.Remote>;
-  }
-
-  export namespace Server {
-    export interface Repository {
-      source: string;
-
-      url: string;
-    }
-
-    export interface Package {
-      name: string;
-
-      registryName: string;
-
-      version: string;
-
-      environmentVariables?: Array<Package.EnvironmentVariable>;
-
-      packageArguments?: Array<Package.PackageArgument>;
-
-      runtimeArguments?: Array<Package.RuntimeArgument>;
-
-      runtimeHint?: string;
-    }
-
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: EnvironmentVariable.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
-
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-  }
+  server: ServerDetail;
 }
 
 export interface ServerUpdateResponse {
-  server: ServerUpdateResponse.Server;
-}
-
-export namespace ServerUpdateResponse {
-  export interface Server {
-    id: string;
-
-    description: string;
-
-    displayName: string;
-
-    packageName: string;
-
-    repository: Server.Repository;
-
-    scope: string;
-
-    updatedAt: string;
-
-    version: string;
-
-    documentationUrl?: string;
-
-    iconUrl?: string;
-
-    packages?: Array<Server.Package>;
-
-    remotes?: Array<Server.Remote>;
-  }
-
-  export namespace Server {
-    export interface Repository {
-      source: string;
-
-      url: string;
-    }
-
-    export interface Package {
-      name: string;
-
-      registryName: string;
-
-      version: string;
-
-      environmentVariables?: Array<Package.EnvironmentVariable>;
-
-      packageArguments?: Array<Package.PackageArgument>;
-
-      runtimeArguments?: Array<Package.RuntimeArgument>;
-
-      runtimeHint?: string;
-    }
-
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: EnvironmentVariable.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
-
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-  }
+  server: ServerDetail;
 }
 
 export interface ServerListResponse {
@@ -1113,7 +224,7 @@ export interface ServerListResponse {
 
   packageName: string;
 
-  repository: ServerListResponse.Repository;
+  repository: Repository;
 
   scope: string;
 
@@ -1126,360 +237,12 @@ export interface ServerListResponse {
   iconUrl?: string;
 }
 
-export namespace ServerListResponse {
-  export interface Repository {
-    source: string;
-
-    url: string;
-  }
-}
-
 export interface ServerDeleteResponse {
   message: string;
 }
 
 export interface ServerRetrieveByPackageResponse {
-  server: ServerRetrieveByPackageResponse.Server;
-}
-
-export namespace ServerRetrieveByPackageResponse {
-  export interface Server {
-    id: string;
-
-    description: string;
-
-    displayName: string;
-
-    packageName: string;
-
-    repository: Server.Repository;
-
-    scope: string;
-
-    updatedAt: string;
-
-    version: string;
-
-    documentationUrl?: string;
-
-    iconUrl?: string;
-
-    packages?: Array<Server.Package>;
-
-    remotes?: Array<Server.Remote>;
-  }
-
-  export namespace Server {
-    export interface Repository {
-      source: string;
-
-      url: string;
-    }
-
-    export interface Package {
-      name: string;
-
-      registryName: string;
-
-      version: string;
-
-      environmentVariables?: Array<Package.EnvironmentVariable>;
-
-      packageArguments?: Array<Package.PackageArgument>;
-
-      runtimeArguments?: Array<Package.RuntimeArgument>;
-
-      runtimeHint?: string;
-    }
-
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: EnvironmentVariable.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
-
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-  }
+  server: ServerDetail;
 }
 
 export interface ServerCreateParams {
@@ -1503,7 +266,7 @@ export namespace ServerCreateParams {
      */
     packageName: string;
 
-    repository: Server.Repository;
+    repository: ServersAPI.Repository;
 
     /**
      * The scope of the MCP server
@@ -1528,324 +291,12 @@ export namespace ServerCreateParams {
     /**
      * Package configurations
      */
-    packages?: Array<Server.Package>;
+    packages?: Array<ServersAPI.Package>;
 
     /**
      * Remote configurations
      */
-    remotes?: Array<Server.Remote>;
-  }
-
-  export namespace Server {
-    export interface Repository {
-      source: string;
-
-      url: string;
-    }
-
-    export interface Package {
-      name: string;
-
-      registryName: string;
-
-      version: string;
-
-      environmentVariables?: Array<Package.EnvironmentVariable>;
-
-      packageArguments?: Array<Package.PackageArgument>;
-
-      runtimeArguments?: Array<Package.RuntimeArgument>;
-
-      runtimeHint?: string;
-    }
-
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: EnvironmentVariable.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
-
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
+    remotes?: Array<ServersAPI.Remote>;
   }
 }
 
@@ -1883,14 +334,14 @@ export namespace ServerUpdateParams {
     /**
      * Package configurations
      */
-    packages?: Array<Server.Package>;
+    packages?: Array<ServersAPI.Package>;
 
     /**
      * Remote configurations
      */
-    remotes?: Array<Server.Remote>;
+    remotes?: Array<ServersAPI.Remote>;
 
-    repository?: Server.Repository;
+    repository?: ServersAPI.Repository;
 
     /**
      * The scope of the MCP server
@@ -1901,318 +352,6 @@ export namespace ServerUpdateParams {
      * Version of the MCP server
      */
     version?: string;
-  }
-
-  export namespace Server {
-    export interface Package {
-      name: string;
-
-      registryName: string;
-
-      version: string;
-
-      environmentVariables?: Array<Package.EnvironmentVariable>;
-
-      packageArguments?: Array<Package.PackageArgument>;
-
-      runtimeArguments?: Array<Package.RuntimeArgument>;
-
-      runtimeHint?: string;
-    }
-
-    export namespace Package {
-      export interface EnvironmentVariable {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: EnvironmentVariable.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: EnvironmentVariable.Variables };
-      }
-
-      export namespace EnvironmentVariable {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface PackageArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: PackageArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: PackageArgument.Variables };
-      }
-
-      export namespace PackageArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-
-      export interface RuntimeArgument {
-        type: 'positional' | 'named';
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRepeated?: boolean;
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        name?: string;
-
-        properties?: { [key: string]: RuntimeArgument.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        valueHint?: string;
-
-        variables?: { [key: string]: RuntimeArgument.Variables };
-      }
-
-      export namespace RuntimeArgument {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Remote {
-      transportType: string;
-
-      url: string;
-
-      headers?: Array<Remote.Header>;
-    }
-
-    export namespace Remote {
-      export interface Header {
-        name: string;
-
-        choices?: Array<string>;
-
-        default?: string;
-
-        description?: string;
-
-        format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-        isRequired?: boolean;
-
-        isSecret?: boolean;
-
-        properties?: { [key: string]: Header.Properties };
-
-        template?: string;
-
-        value?: string;
-
-        variables?: { [key: string]: Header.Variables };
-      }
-
-      export namespace Header {
-        export interface Properties {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-
-        export interface Variables {
-          choices?: Array<string>;
-
-          default?: string;
-
-          description?: string;
-
-          format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-          isRequired?: boolean;
-
-          isSecret?: boolean;
-
-          properties?: { [key: string]: unknown };
-
-          template?: string;
-
-          value?: string;
-        }
-      }
-    }
-
-    export interface Repository {
-      source: string;
-
-      url: string;
-    }
   }
 }
 
@@ -2243,6 +382,13 @@ export interface ServerRetrieveByPackageParams {
 
 export declare namespace Servers {
   export {
+    type Argument as Argument,
+    type Input as Input,
+    type KeyValueInput as KeyValueInput,
+    type Package as Package,
+    type Remote as Remote,
+    type Repository as Repository,
+    type ServerDetail as ServerDetail,
     type ServerCreateResponse as ServerCreateResponse,
     type ServerRetrieveResponse as ServerRetrieveResponse,
     type ServerUpdateResponse as ServerUpdateResponse,

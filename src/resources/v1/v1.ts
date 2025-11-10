@@ -5,9 +5,16 @@ import * as DocumentationAPI from './documentation';
 import { Documentation, DocumentationProxyParams, DocumentationProxyResponse } from './documentation';
 import * as ServersAPI from './servers';
 import {
+  Argument,
+  Input,
+  KeyValueInput,
+  Package,
+  Remote,
+  Repository,
   ServerCreateParams,
   ServerCreateResponse,
   ServerDeleteResponse,
+  ServerDetail,
   ServerListParams,
   ServerListResponse,
   ServerListResponsesCursorPage,
@@ -53,6 +60,13 @@ export declare namespace V1 {
 
   export {
     Servers as Servers,
+    type Argument as Argument,
+    type Input as Input,
+    type KeyValueInput as KeyValueInput,
+    type Package as Package,
+    type Remote as Remote,
+    type Repository as Repository,
+    type ServerDetail as ServerDetail,
     type ServerCreateResponse as ServerCreateResponse,
     type ServerRetrieveResponse as ServerRetrieveResponse,
     type ServerUpdateResponse as ServerUpdateResponse,
