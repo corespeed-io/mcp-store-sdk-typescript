@@ -41,7 +41,6 @@ The full API of this library can be found in [api.md](api.md).
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
@@ -59,7 +58,6 @@ This library includes TypeScript definitions for all request params and response
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
