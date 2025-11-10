@@ -41,10 +41,10 @@ The full API of this library can be found in [api.md](api.md).
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  environment: 'development', // defaults to 'production'
+  environment: 'environment_1', // defaults to 'production'
 });
 
-const response = await client.health.check();
+const response = await client.v1.checkHealth();
 
 console.log(response.message);
 ```
@@ -58,10 +58,10 @@ This library includes TypeScript definitions for all request params and response
 import McpStoreSDK from 'mcp-store-sdk';
 
 const client = new McpStoreSDK({
-  environment: 'development', // defaults to 'production'
+  environment: 'environment_1', // defaults to 'production'
 });
 
-const response: McpStoreSDK.HealthCheckResponse = await client.health.check();
+const response: McpStoreSDK.V1CheckHealthResponse = await client.v1.checkHealth();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -74,7 +74,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.health.check().catch(async (err) => {
+const response = await client.v1.checkHealth().catch(async (err) => {
   if (err instanceof McpStoreSDK.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -114,7 +114,7 @@ const client = new McpStoreSDK({
 });
 
 // Or, configure per-request:
-await client.health.check({
+await client.v1.checkHealth({
   maxRetries: 5,
 });
 ```
@@ -131,7 +131,7 @@ const client = new McpStoreSDK({
 });
 
 // Override per-request:
-await client.health.check({
+await client.v1.checkHealth({
   timeout: 5 * 1000,
 });
 ```
@@ -146,22 +146,22 @@ List methods in the McpStoreSDK API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllServers(params) {
-  const allServers = [];
+async function fetchAllServerListResponses(params) {
+  const allServerListResponses = [];
   // Automatically fetches more pages as needed.
-  for await (const server of client.servers.list({ limit: 12 })) {
-    allServers.push(server);
+  for await (const serverListResponse of client.v1.servers.list({ limit: 12 })) {
+    allServerListResponses.push(serverListResponse);
   }
-  return allServers;
+  return allServerListResponses;
 }
 ```
 
 Alternatively, you can request a single page at a time:
 
 ```ts
-let page = await client.servers.list({ limit: 12 });
-for (const server of page.servers) {
-  console.log(server);
+let page = await client.v1.servers.list({ limit: 12 });
+for (const serverListResponse of page.servers) {
+  console.log(serverListResponse);
 }
 
 // Convenience methods are provided for manually paginating:
@@ -185,11 +185,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new McpStoreSDK();
 
-const response = await client.health.check().asResponse();
+const response = await client.v1.checkHealth().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.health.check().withResponse();
+const { data: response, response: raw } = await client.v1.checkHealth().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.message);
 ```
@@ -271,7 +271,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.health.check({
+client.v1.checkHealth({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',

@@ -18,20 +18,7 @@ import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import {
-  Documentation,
-  DocumentationProxyParams,
-  DocumentationProxyResponse,
-} from './resources/documentation';
-import { Health, HealthCheckResponse } from './resources/health';
-import {
-  ServerCreateParams,
-  ServerDeleteResponse,
-  ServerListParams,
-  ServerRetrieveByPackageParams,
-  ServerUpdateParams,
-  Servers,
-} from './resources/servers';
+import { V1, V1CheckHealthResponse } from './resources/v1/v1';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -46,8 +33,8 @@ import {
 import { isEmptyObj } from './internal/utils/values';
 
 const environments = {
-  production: 'https://api1.mcp.corespeed.dev',
-  development: 'http://localhost:8000',
+  production: 'http://localhost:8000',
+  environment_1: 'https://api1.mcp.corespeed.dev',
 };
 type Environment = keyof typeof environments;
 
@@ -61,8 +48,8 @@ export interface ClientOptions {
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://api1.mcp.corespeed.dev`
-   * - `development` corresponds to `http://localhost:8000`
+   * - `production` corresponds to `http://localhost:8000`
+   * - `environment_1` corresponds to `https://api1.mcp.corespeed.dev`
    */
   environment?: Environment | undefined;
 
@@ -158,7 +145,7 @@ export class McpStoreSDK {
    *
    * @param {string | undefined} [opts.apiKey=process.env['MCP_STORE_SDK_API_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['MCP_STORE_SDK_BASE_URL'] ?? https://api1.mcp.corespeed.dev] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['MCP_STORE_SDK_BASE_URL'] ?? http://localhost:8000] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -772,14 +759,10 @@ export class McpStoreSDK {
 
   static toFile = Uploads.toFile;
 
-  health: API.Health = new API.Health(this);
-  documentation: API.Documentation = new API.Documentation(this);
-  servers: API.Servers = new API.Servers(this);
+  v1: API.V1 = new API.V1(this);
 }
 
-McpStoreSDK.Health = Health;
-McpStoreSDK.Documentation = Documentation;
-McpStoreSDK.Servers = Servers;
+McpStoreSDK.V1 = V1;
 
 export declare namespace McpStoreSDK {
   export type RequestOptions = Opts.RequestOptions;
@@ -787,33 +770,5 @@ export declare namespace McpStoreSDK {
   export import CursorPage = Pagination.CursorPage;
   export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
 
-  export { Health as Health, type HealthCheckResponse as HealthCheckResponse };
-
-  export {
-    Documentation as Documentation,
-    type DocumentationProxyResponse as DocumentationProxyResponse,
-    type DocumentationProxyParams as DocumentationProxyParams,
-  };
-
-  export {
-    Servers as Servers,
-    type ServerDeleteResponse as ServerDeleteResponse,
-    type ServerCreateParams as ServerCreateParams,
-    type ServerUpdateParams as ServerUpdateParams,
-    type ServerListParams as ServerListParams,
-    type ServerRetrieveByPackageParams as ServerRetrieveByPackageParams,
-  };
-
-  export type Argument = API.Argument;
-  export type Input = API.Input;
-  export type KeyValueInput = API.KeyValueInput;
-  export type Package = API.Package;
-  export type Remote = API.Remote;
-  export type Repository = API.Repository;
-  export type Server = API.Server;
-  export type ServerCreate = API.ServerCreate;
-  export type ServerDetail = API.ServerDetail;
-  export type ServerListResponse = API.ServerListResponse;
-  export type ServerResponse = API.ServerResponse;
-  export type ServerUpdate = API.ServerUpdate;
+  export { V1 as V1, type V1CheckHealthResponse as V1CheckHealthResponse };
 }

@@ -10,7 +10,7 @@ const client = new McpStoreSDK({
 describe('resource servers', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.servers.create({
+    const responsePromise = client.v1.servers.create({
       server: {
         description: 'description',
         displayName: 'displayName',
@@ -31,7 +31,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
-    const response = await client.servers.create({
+    const response = await client.v1.servers.create({
       server: {
         description: 'description',
         displayName: 'displayName',
@@ -223,7 +223,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.servers.retrieve('id');
+    const responsePromise = client.v1.servers.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -235,7 +235,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('update', async () => {
-    const responsePromise = client.servers.update('id');
+    const responsePromise = client.v1.servers.update('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -249,7 +249,7 @@ describe('resource servers', () => {
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.servers.update(
+      client.v1.servers.update(
         'id',
         {
           server: {
@@ -446,7 +446,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('list', async () => {
-    const responsePromise = client.servers.list();
+    const responsePromise = client.v1.servers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -460,7 +460,7 @@ describe('resource servers', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.servers.list(
+      client.v1.servers.list(
         { cursor: 'eyJpZCI6IjEyMyJ9', limit: 12, search: 'serverName', sort: 'updatedAt' },
         { path: '/_stainless_unknown_path' },
       ),
@@ -469,7 +469,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('delete', async () => {
-    const responsePromise = client.servers.delete('id');
+    const responsePromise = client.v1.servers.delete('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -481,7 +481,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('retrieveByPackage: only required params', async () => {
-    const responsePromise = client.servers.retrieveByPackage('packageName', { scope: 'scope' });
+    const responsePromise = client.v1.servers.retrieveByPackage('packageName', { scope: 'scope' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -493,6 +493,6 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('retrieveByPackage: required and optional params', async () => {
-    const response = await client.servers.retrieveByPackage('packageName', { scope: 'scope' });
+    const response = await client.v1.servers.retrieveByPackage('packageName', { scope: 'scope' });
   });
 });
