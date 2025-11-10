@@ -11,10 +11,14 @@ describe('resource servers', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.v1.servers.create({
-      description: 'description',
-      name: 'name',
-      repository: { id: 'id', source: 'source', url: 'https://example.com' },
-      versionDetail: { isLatest: true, releaseDate: 'releaseDate', version: 'version' },
+      server: {
+        description: 'description',
+        displayName: 'displayName',
+        packageName: 'packageName',
+        repository: { source: 'source', url: 'https://example.com' },
+        scope: 'scope',
+        version: 'version',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,187 +32,192 @@ describe('resource servers', () => {
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.v1.servers.create({
-      description: 'description',
-      name: 'name',
-      repository: { id: 'id', source: 'source', url: 'https://example.com' },
-      versionDetail: { isLatest: true, releaseDate: 'releaseDate', version: 'version' },
-      iconUrl: 'https://example.com',
-      packages: [
-        {
-          name: 'name',
-          registryName: 'registryName',
-          version: 'version',
-          environmentVariables: [
-            {
-              name: 'name',
-              choices: ['string'],
-              default: 'default',
-              description: 'description',
-              format: 'string',
-              isRequired: true,
-              isSecret: true,
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
+      server: {
+        description: 'description',
+        displayName: 'displayName',
+        packageName: 'packageName',
+        repository: { source: 'source', url: 'https://example.com' },
+        scope: 'scope',
+        version: 'version',
+        documentationUrl: 'https://example.com',
+        iconUrl: 'https://example.com',
+        packages: [
+          {
+            name: 'name',
+            registryName: 'registryName',
+            version: 'version',
+            environmentVariables: [
+              {
+                name: 'name',
+                choices: ['string'],
+                default: 'default',
+                description: 'description',
+                format: 'string',
+                isRequired: true,
+                isSecret: true,
+                properties: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
+                },
+                template: 'template',
+                value: 'value',
+                variables: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
                 },
               },
-              template: 'template',
-              value: 'value',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
+            ],
+            packageArguments: [
+              {
+                type: 'positional',
+                choices: ['string'],
+                default: 'default',
+                description: 'description',
+                format: 'string',
+                isRepeated: true,
+                isRequired: true,
+                isSecret: true,
+                name: 'name',
+                properties: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
+                },
+                template: 'template',
+                value: 'value',
+                valueHint: 'valueHint',
+                variables: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
                 },
               },
-            },
-          ],
-          packageArguments: [
-            {
-              type: 'positional',
-              choices: ['string'],
-              default: 'default',
-              description: 'description',
-              format: 'string',
-              isRepeated: true,
-              isRequired: true,
-              isSecret: true,
-              name: 'name',
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
+            ],
+            runtimeArguments: [
+              {
+                type: 'positional',
+                choices: ['string'],
+                default: 'default',
+                description: 'description',
+                format: 'string',
+                isRepeated: true,
+                isRequired: true,
+                isSecret: true,
+                name: 'name',
+                properties: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
+                },
+                template: 'template',
+                value: 'value',
+                valueHint: 'valueHint',
+                variables: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
                 },
               },
-              template: 'template',
-              value: 'value',
-              valueHint: 'valueHint',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
+            ],
+            runtimeHint: 'runtimeHint',
+          },
+        ],
+        remotes: [
+          {
+            transportType: 'transportType',
+            url: 'https://example.com',
+            headers: [
+              {
+                name: 'name',
+                choices: ['string'],
+                default: 'default',
+                description: 'description',
+                format: 'string',
+                isRequired: true,
+                isSecret: true,
+                properties: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
+                },
+                template: 'template',
+                value: 'value',
+                variables: {
+                  foo: {
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {},
+                    template: 'template',
+                    value: 'value',
+                  },
                 },
               },
-            },
-          ],
-          runtimeArguments: [
-            {
-              type: 'positional',
-              choices: ['string'],
-              default: 'default',
-              description: 'description',
-              format: 'string',
-              isRepeated: true,
-              isRequired: true,
-              isSecret: true,
-              name: 'name',
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
-              template: 'template',
-              value: 'value',
-              valueHint: 'valueHint',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
-            },
-          ],
-          runtimeHint: 'runtimeHint',
-        },
-      ],
-      remotes: [
-        {
-          transportType: 'transportType',
-          url: 'https://example.com',
-          headers: [
-            {
-              name: 'name',
-              choices: ['string'],
-              default: 'default',
-              description: 'description',
-              format: 'string',
-              isRequired: true,
-              isSecret: true,
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
-              template: 'template',
-              value: 'value',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
-            },
-          ],
-        },
-      ],
+            ],
+          },
+        ],
+      },
     });
   });
 
@@ -243,188 +252,192 @@ describe('resource servers', () => {
       client.v1.servers.update(
         'id',
         {
-          description: 'description',
-          documentationUrl: 'https://example.com',
-          iconUrl: 'https://example.com',
-          name: 'name',
-          packages: [
-            {
-              name: 'name',
-              registryName: 'registryName',
-              version: 'version',
-              environmentVariables: [
-                {
-                  name: 'name',
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
+          server: {
+            description: 'description',
+            displayName: 'displayName',
+            documentationUrl: 'https://example.com',
+            iconUrl: 'https://example.com',
+            packageName: 'packageName',
+            packages: [
+              {
+                name: 'name',
+                registryName: 'registryName',
+                version: 'version',
+                environmentVariables: [
+                  {
+                    name: 'name',
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
+                    },
+                    template: 'template',
+                    value: 'value',
+                    variables: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
                     },
                   },
-                  template: 'template',
-                  value: 'value',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
+                ],
+                packageArguments: [
+                  {
+                    type: 'positional',
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRepeated: true,
+                    isRequired: true,
+                    isSecret: true,
+                    name: 'name',
+                    properties: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
+                    },
+                    template: 'template',
+                    value: 'value',
+                    valueHint: 'valueHint',
+                    variables: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
                     },
                   },
-                },
-              ],
-              packageArguments: [
-                {
-                  type: 'positional',
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRepeated: true,
-                  isRequired: true,
-                  isSecret: true,
-                  name: 'name',
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
+                ],
+                runtimeArguments: [
+                  {
+                    type: 'positional',
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRepeated: true,
+                    isRequired: true,
+                    isSecret: true,
+                    name: 'name',
+                    properties: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
+                    },
+                    template: 'template',
+                    value: 'value',
+                    valueHint: 'valueHint',
+                    variables: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
                     },
                   },
-                  template: 'template',
-                  value: 'value',
-                  valueHint: 'valueHint',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
+                ],
+                runtimeHint: 'runtimeHint',
+              },
+            ],
+            remotes: [
+              {
+                transportType: 'transportType',
+                url: 'https://example.com',
+                headers: [
+                  {
+                    name: 'name',
+                    choices: ['string'],
+                    default: 'default',
+                    description: 'description',
+                    format: 'string',
+                    isRequired: true,
+                    isSecret: true,
+                    properties: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
+                    },
+                    template: 'template',
+                    value: 'value',
+                    variables: {
+                      foo: {
+                        choices: ['string'],
+                        default: 'default',
+                        description: 'description',
+                        format: 'string',
+                        isRequired: true,
+                        isSecret: true,
+                        properties: {},
+                        template: 'template',
+                        value: 'value',
+                      },
                     },
                   },
-                },
-              ],
-              runtimeArguments: [
-                {
-                  type: 'positional',
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRepeated: true,
-                  isRequired: true,
-                  isSecret: true,
-                  name: 'name',
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
-                  template: 'template',
-                  value: 'value',
-                  valueHint: 'valueHint',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
-                },
-              ],
-              runtimeHint: 'runtimeHint',
-            },
-          ],
-          remotes: [
-            {
-              transportType: 'transportType',
-              url: 'https://example.com',
-              headers: [
-                {
-                  name: 'name',
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
-                  template: 'template',
-                  value: 'value',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
-                },
-              ],
-            },
-          ],
-          repository: { id: 'id', source: 'source', url: 'https://example.com' },
-          versionDetail: { isLatest: true, releaseDate: 'releaseDate', version: 'version' },
+                ],
+              },
+            ],
+            repository: { source: 'source', url: 'https://example.com' },
+            scope: 'scope',
+            version: 'version',
+          },
         },
         { path: '/_stainless_unknown_path' },
       ),
@@ -448,7 +461,7 @@ describe('resource servers', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.v1.servers.list(
-        { limit: 10, offset: 0, search: 'serverName', sort: 'updatedAt' },
+        { cursor: 'eyJpZCI6IjEyMyJ9', limit: 12, search: 'serverName', sort: 'updatedAt' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(McpStoreSDK.NotFoundError);
@@ -464,5 +477,22 @@ describe('resource servers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('retrieveByPackage: only required params', async () => {
+    const responsePromise = client.v1.servers.retrieveByPackage('packageName', { scope: 'scope' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('retrieveByPackage: required and optional params', async () => {
+    const response = await client.v1.servers.retrieveByPackage('packageName', { scope: 'scope' });
   });
 });
