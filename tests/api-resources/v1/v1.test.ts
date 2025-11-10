@@ -7,12 +7,10 @@ const client = new McpStoreSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource documentation', () => {
+describe('resource v1', () => {
   // Prism tests are disabled
-  test.skip('proxy: only required params', async () => {
-    const responsePromise = client.documentation.proxy({
-      url: 'https://github.com/owner/repo/blob/main/README.md',
-    });
+  test.skip('checkHealth', async () => {
+    const responsePromise = client.v1.checkHealth();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,12 +18,5 @@ describe('resource documentation', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('proxy: required and optional params', async () => {
-    const response = await client.documentation.proxy({
-      url: 'https://github.com/owner/repo/blob/main/README.md',
-    });
   });
 });

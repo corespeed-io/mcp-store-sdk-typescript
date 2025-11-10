@@ -306,13 +306,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['MCP_STORE_SDK_BASE_URL'] = ''; // empty
       const client = new McpStoreSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api1.mcp.corespeed.dev');
+      expect(client.baseURL).toEqual('http://localhost:8000');
     });
 
     test('blank env variable', () => {
       process.env['MCP_STORE_SDK_BASE_URL'] = '  '; // blank
       const client = new McpStoreSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api1.mcp.corespeed.dev');
+      expect(client.baseURL).toEqual('http://localhost:8000');
     });
 
     test('env variable with environment', () => {
@@ -325,7 +325,7 @@ describe('instantiate client', () => {
       );
 
       const client = new McpStoreSDK({ apiKey: 'My API Key', baseURL: null, environment: 'production' });
-      expect(client.baseURL).toEqual('https://api1.mcp.corespeed.dev');
+      expect(client.baseURL).toEqual('http://localhost:8000');
     });
 
     test('in request options', () => {
