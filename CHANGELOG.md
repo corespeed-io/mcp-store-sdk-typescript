@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.1 (2025-11-11)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.7.0...v1.7.1)
+
+### Chores
+
+* add typescript-estree dependency for jsr readme script ([b80bb0e](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/b80bb0e571478600fb7b8f898ae78e7205918bcf))
+
 ## 1.7.0 (2025-11-10)
 
 Full Changelog: [v1.6.2...v1.7.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.6.2...v1.7.0)
