@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "mcp-store-sdk/*": ["./src/*"],
-      "mcp-store-sdk": ["./src/index.ts"]
+      "mcp-store-client/*": ["./src/*"],
+      "mcp-store-client": ["./src/index.ts"]
     },
     "noEmit": true,
 

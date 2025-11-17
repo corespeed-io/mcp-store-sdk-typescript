@@ -1,8 +1,8 @@
-# Mcp Store SDK TypeScript API Library
+# Mcp Store Client TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/mcp-store-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-sdk) [![JSR Version](https://jsr.io/badges/@corespeed/mcp-store-client)](https://jsr.io/@corespeed/mcp-store-client)
+[![NPM version](<https://img.shields.io/npm/v/mcp-store-client.svg?label=npm%20(stable)>)](https://npmjs.org/package/mcp-store-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/mcp-store-client) [![JSR Version](https://jsr.io/badges/@corespeed/mcp-store-client)](https://jsr.io/@corespeed/mcp-store-client)
 
-This library provides convenient access to the Mcp Store SDK REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Mcp Store Client REST API from server-side TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](api.md).
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:corespeed-io/mcp-store-sdk-typescript.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install mcp-store-sdk`
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install mcp-store-client`
 
 ### Installation from JSR
 
@@ -29,7 +29,7 @@ These commands will make the module importable from the `@corespeed/mcp-store-cl
 You can also [import directly from JSR](https://jsr.io/docs/using-packages#importing-with-jsr-specifiers) without an install step if you're using the Deno JavaScript runtime:
 
 ```ts
-import McpStoreSDK from 'jsr:@corespeed/mcp-store-client';
+import McpStoreClient from 'jsr:@corespeed/mcp-store-client';
 ```
 
 ## Usage
@@ -38,9 +38,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   environment: 'development', // defaults to 'production'
 });
 
@@ -55,13 +55,13 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   environment: 'development', // defaults to 'production'
 });
 
-const response: McpStoreSDK.HealthCheckResponse = await client.health.check();
+const response: McpStoreClient.HealthCheckResponse = await client.health.check();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -75,7 +75,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 const response = await client.health.check().catch(async (err) => {
-  if (err instanceof McpStoreSDK.APIError) {
+  if (err instanceof McpStoreClient.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
     console.log(err.headers); // {server: 'nginx', ...}
@@ -109,7 +109,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   maxRetries: 0, // default is 2
 });
 
@@ -126,7 +126,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -142,7 +142,7 @@ Note that requests which time out will be [retried twice by default](#retries).
 
 ## Auto-pagination
 
-List methods in the McpStoreSDK API are paginated.
+List methods in the McpStoreClient API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
@@ -183,7 +183,7 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 
 <!-- prettier-ignore -->
 ```ts
-const client = new McpStoreSDK();
+const client = new McpStoreClient();
 
 const response = await client.health.check().asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -204,13 +204,13 @@ console.log(response.message);
 
 The log level can be configured in two ways:
 
-1. Via the `MCP_STORE_SDK_LOG` environment variable
+1. Via the `MCP_STORE_CLIENT_LOG` environment variable
 2. Using the `logLevel` client option (overrides the environment variable if set)
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   logLevel: 'debug', // Show all log messages
 });
 ```
@@ -236,13 +236,13 @@ When providing a custom logger, the `logLevel` option still controls which messa
 below the configured level will not be sent to your logger.
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 import pino from 'pino';
 
 const logger = pino();
 
-const client = new McpStoreSDK({
-  logger: logger.child({ name: 'McpStoreSDK' }),
+const client = new McpStoreClient({
+  logger: logger.child({ name: 'McpStoreClient' }),
   logLevel: 'debug', // Send all messages to pino, allowing it to filter
 });
 ```
@@ -305,10 +305,10 @@ globalThis.fetch = fetch;
 Or pass it to the client:
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 import fetch from 'my-fetch';
 
-const client = new McpStoreSDK({ fetch });
+const client = new McpStoreClient({ fetch });
 ```
 
 ### Fetch options
@@ -316,9 +316,9 @@ const client = new McpStoreSDK({ fetch });
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   fetchOptions: {
     // `RequestInit` options
   },
@@ -333,11 +333,11 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   fetchOptions: {
     dispatcher: proxyAgent,
   },
@@ -347,9 +347,9 @@ const client = new McpStoreSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import McpStoreSDK from 'mcp-store-sdk';
+import McpStoreClient from 'mcp-store-client';
 
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   fetchOptions: {
     proxy: 'http://localhost:8888',
   },
@@ -359,10 +359,10 @@ const client = new McpStoreSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import McpStoreSDK from 'jsr:@corespeed/mcp-store-client';
+import McpStoreClient from 'jsr:@corespeed/mcp-store-client';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new McpStoreSDK({
+const client = new McpStoreClient({
   fetchOptions: {
     client: httpClient,
   },

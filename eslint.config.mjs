@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^mcp-store-sdk(/.*)?',
+              regex: '^mcp-store-client(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],
