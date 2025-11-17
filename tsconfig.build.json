@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "mcp-store-sdk/*": ["./dist/src/*"],
-      "mcp-store-sdk": ["./dist/src/index.ts"]
+      "mcp-store-client/*": ["./dist/src/*"],
+      "mcp-store-client": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
