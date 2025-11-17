@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { McpStoreSDKError } from './error';
+import { McpStoreClientError } from './error';
 import { FinalRequestOptions } from '../internal/request-options';
 import { defaultParseResponse } from '../internal/parse';
-import { type McpStoreSDK } from '../client';
+import { type McpStoreClient } from '../client';
 import { APIPromise } from './api-promise';
 import { type APIResponseProps } from '../internal/parse';
 import { maybeObj } from '../internal/utils/values';
@@ -11,13 +11,13 @@ import { maybeObj } from '../internal/utils/values';
 export type PageRequestOptions = Pick<FinalRequestOptions, 'query' | 'headers' | 'body' | 'path' | 'method'>;
 
 export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
-  #client: McpStoreSDK;
+  #client: McpStoreClient;
   protected options: FinalRequestOptions;
 
   protected response: Response;
   protected body: unknown;
 
-  constructor(client: McpStoreSDK, response: Response, body: unknown, options: FinalRequestOptions) {
+  constructor(client: McpStoreClient, response: Response, body: unknown, options: FinalRequestOptions) {
     this.#client = client;
     this.options = options;
     this.response = response;
@@ -37,7 +37,7 @@ export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
   async getNextPage(): Promise<this> {
     const nextOptions = this.nextPageRequestOptions();
     if (!nextOptions) {
-      throw new McpStoreSDKError(
+      throw new McpStoreClientError(
         'No next page expected; please check `.hasNextPage()` before calling `.getNextPage()`.',
       );
     }
@@ -80,7 +80,7 @@ export class PagePromise<
   implements AsyncIterable<Item>
 {
   constructor(
-    client: McpStoreSDK,
+    client: McpStoreClient,
     request: Promise<APIResponseProps>,
     Page: new (...args: ConstructorParameters<typeof AbstractPage>) => PageClass,
   ) {
@@ -137,7 +137,7 @@ export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageRe
   next: string | null;
 
   constructor(
-    client: McpStoreSDK,
+    client: McpStoreClient,
     response: Response,
     body: CursorPageResponse<Item>,
     options: FinalRequestOptions,

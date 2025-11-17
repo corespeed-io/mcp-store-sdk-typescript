@@ -76,7 +76,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['MCP_STORE_SDK_BASE_URL'].
+   * Defaults to process.env['MCP_STORE_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -130,7 +130,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['MCP_STORE_SDK_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['MCP_STORE_CLIENT_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -143,9 +143,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Mcp Store SDK API.
+ * API Client for interfacing with the Mcp Store Client API.
  */
-export class McpStoreSDK {
+export class McpStoreClient {
   apiKey: string;
 
   baseURL: string;
@@ -161,11 +161,11 @@ export class McpStoreSDK {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Mcp Store SDK API.
+   * API Client for interfacing with the Mcp Store Client API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['MCP_STORE_SDK_API_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['MCP_STORE_SDK_BASE_URL'] ?? https://api1.mcp.corespeed.dev] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['MCP_STORE_CLIENT_BASE_URL'] ?? https://api1.mcp.corespeed.dev] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -174,13 +174,13 @@ export class McpStoreSDK {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('MCP_STORE_SDK_BASE_URL'),
+    baseURL = readEnv('MCP_STORE_CLIENT_BASE_URL'),
     apiKey = readEnv('MCP_STORE_SDK_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.McpStoreSDKError(
-        "The MCP_STORE_SDK_API_KEY environment variable is missing or empty; either provide it, or instantiate the McpStoreSDK client with an apiKey option, like new McpStoreSDK({ apiKey: 'My API Key' }).",
+      throw new Errors.McpStoreClientError(
+        "The MCP_STORE_SDK_API_KEY environment variable is missing or empty; either provide it, or instantiate the McpStoreClient client with an apiKey option, like new McpStoreClient({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -192,20 +192,20 @@ export class McpStoreSDK {
     };
 
     if (baseURL && opts.environment) {
-      throw new Errors.McpStoreSDKError(
-        'Ambiguous URL; The `baseURL` option (or MCP_STORE_SDK_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      throw new Errors.McpStoreClientError(
+        'Ambiguous URL; The `baseURL` option (or MCP_STORE_CLIENT_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
       );
     }
 
     this.baseURL = options.baseURL || environments[options.environment || 'production'];
-    this.timeout = options.timeout ?? McpStoreSDK.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? McpStoreClient.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('MCP_STORE_SDK_LOG'), "process.env['MCP_STORE_SDK_LOG']", this) ??
+      parseLogLevel(readEnv('MCP_STORE_CLIENT_LOG'), "process.env['MCP_STORE_CLIENT_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -269,7 +269,7 @@ export class McpStoreSDK {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.McpStoreSDKError(
+        throw new Errors.McpStoreClientError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -544,7 +544,7 @@ export class McpStoreSDK {
     options: FinalRequestOptions,
   ): Pagination.PagePromise<PageClass, Item> {
     const request = this.makeRequest(options, null, undefined);
-    return new Pagination.PagePromise<PageClass, Item>(this as any as McpStoreSDK, request, Page);
+    return new Pagination.PagePromise<PageClass, Item>(this as any as McpStoreClient, request, Page);
   }
 
   async fetchWithTimeout(
@@ -760,10 +760,10 @@ export class McpStoreSDK {
     }
   }
 
-  static McpStoreSDK = this;
+  static McpStoreClient = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static McpStoreSDKError = Errors.McpStoreSDKError;
+  static McpStoreClientError = Errors.McpStoreClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -784,11 +784,11 @@ export class McpStoreSDK {
   servers: API.Servers = new API.Servers(this);
 }
 
-McpStoreSDK.Health = Health;
-McpStoreSDK.Documentation = Documentation;
-McpStoreSDK.Servers = Servers;
+McpStoreClient.Health = Health;
+McpStoreClient.Documentation = Documentation;
+McpStoreClient.Servers = Servers;
 
-export declare namespace McpStoreSDK {
+export declare namespace McpStoreClient {
   export type RequestOptions = Opts.RequestOptions;
 
   export import CursorPage = Pagination.CursorPage;

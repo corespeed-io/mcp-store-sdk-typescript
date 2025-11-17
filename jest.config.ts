@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^mcp-store-sdk$': '<rootDir>/src/index.ts',
-    '^mcp-store-sdk/(.*)$': '<rootDir>/src/$1',
+    '^mcp-store-client$': '<rootDir>/src/index.ts',
+    '^mcp-store-client/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

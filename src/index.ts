@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { McpStoreSDK as default } from './client';
+export { McpStoreClient as default } from './client';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
-export { McpStoreSDK, type ClientOptions } from './client';
+export { McpStoreClient, type ClientOptions } from './client';
 export { PagePromise, type CursorPageParams, type CursorPageResponse } from './core/pagination';
 export {
-  McpStoreSDKError,
+  McpStoreClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
