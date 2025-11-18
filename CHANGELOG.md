@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1 (2025-11-18)
+
+Full Changelog: [v1.8.0...v1.8.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.8.0...v1.8.1)
+
+### Chores
+
+* update SDK settings ([bf018b4](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/bf018b410ee36c196cf6e25d67bf38eed5678918))
+
 ## 1.8.0 (2025-11-17)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.7.0...v1.8.0)
