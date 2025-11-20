@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0 (2025-11-20)
+
+Full Changelog: [v1.8.1...v1.9.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.8.1...v1.9.0)
+
+### Features
+
+* **api:** Put the package under corespeed scope ([5f72b72](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/5f72b72e9a0849e4d0da583999efcd5775744e7f))
+
 ## 1.8.1 (2025-11-18)
 
 Full Changelog: [v1.8.0...v1.8.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.8.0...v1.8.1)
