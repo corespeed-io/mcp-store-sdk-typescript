@@ -133,7 +133,7 @@ function processReadme(config, file) {
 }
 
 const config = {
-  npm: 'mcp-store-client',
+  npm: '@corespeed/mcp-store-client',
   jsr: '@corespeed/mcp-store-client',
 };
 
