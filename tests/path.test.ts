@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'mcp-store-client/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from '@corespeed/mcp-store-client/internal/utils/path';
 import { inspect } from 'node:util';
 import { runInNewContext } from 'node:vm';
 

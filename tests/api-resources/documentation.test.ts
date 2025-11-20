@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import McpStoreClient from 'mcp-store-client';
+import McpStoreClient from '@corespeed/mcp-store-client';
 
 const client = new McpStoreClient({
   apiKey: 'My API Key',

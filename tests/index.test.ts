@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'mcp-store-client/core/api-promise';
+import { APIPromise } from '@corespeed/mcp-store-client/core/api-promise';
 
 import util from 'node:util';
-import McpStoreClient from 'mcp-store-client';
-import { APIUserAbortError } from 'mcp-store-client';
+import McpStoreClient from '@corespeed/mcp-store-client';
+import { APIUserAbortError } from '@corespeed/mcp-store-client';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {
