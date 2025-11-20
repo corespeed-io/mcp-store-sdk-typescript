@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'mcp-store-client/internal/uploads';
-import { toFile } from 'mcp-store-client/core/uploads';
+import { multipartFormRequestOptions, createForm } from '@corespeed/mcp-store-client/internal/uploads';
+import { toFile } from '@corespeed/mcp-store-client/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
