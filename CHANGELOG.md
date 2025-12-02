@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.1 (2025-12-02)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.9.0...v1.9.1)
+
+### Chores
+
+* **client:** fix logger property type ([5313751](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/5313751446c639908143c8daf11efced009c8935))
+
 ## 1.9.0 (2025-11-20)
 
 Full Changelog: [v1.8.1...v1.9.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.8.1...v1.9.0)
