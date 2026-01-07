@@ -455,7 +455,12 @@ describe('resource servers', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.servers.list(
-        { cursor: 'eyJpZCI6IjEyMyJ9', limit: 12, search: 'serverName', sort: 'updatedAt' },
+        {
+          cursor: 'eyJpZCI6IjEyMyJ9',
+          limit: 12,
+          search: 'serverName',
+          sort: 'updatedAt',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(McpStoreClient.NotFoundError);
