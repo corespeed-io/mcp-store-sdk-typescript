@@ -14,18 +14,49 @@ import * as Opts from './internal/request-options';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Pagination from './core/pagination';
-import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/pagination';
+import {
+  AbstractPage,
+  type AgentCursorPageParams,
+  AgentCursorPageResponse,
+  type CursorPageParams,
+  CursorPageResponse,
+} from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
+import {
+  Agent,
+  AgentCreate,
+  AgentCreateParams,
+  AgentCreateResponse,
+  AgentDeleteResponse,
+  AgentListParams,
+  AgentRetrieveBySlugParams,
+  AgentRetrieveBySlugResponse,
+  AgentRetrieveResponse,
+  AgentUpdate,
+  AgentUpdateParams,
+  AgentUpdateResponse,
+  Agents,
+  AgentsAgentCursorPage,
+} from './resources/agents';
 import {
   Documentation,
   DocumentationProxyParams,
   DocumentationProxyResponse,
 } from './resources/documentation';
+import {
+  Gateway,
+  GatewayPublishServerResponse,
+  GatewayUnpublishServerParams,
+  GatewayUnpublishServerResponse,
+  GatewayUpdateServerParams,
+  GatewayUpdateServerResponse,
+} from './resources/gateway';
 import { Health, HealthCheckResponse } from './resources/health';
 import {
   Server,
+  ServerCreate,
   ServerCreateParams,
   ServerCreateResponse,
   ServerDeleteResponse,
@@ -34,6 +65,7 @@ import {
   ServerRetrieveByPackageParams,
   ServerRetrieveByPackageResponse,
   ServerRetrieveResponse,
+  ServerUpdate,
   ServerUpdateParams,
   ServerUpdateResponse,
   Servers,
@@ -782,17 +814,27 @@ export class McpStoreClient {
   health: API.Health = new API.Health(this);
   documentation: API.Documentation = new API.Documentation(this);
   servers: API.Servers = new API.Servers(this);
+  agents: API.Agents = new API.Agents(this);
+  gateway: API.Gateway = new API.Gateway(this);
 }
 
 McpStoreClient.Health = Health;
 McpStoreClient.Documentation = Documentation;
 McpStoreClient.Servers = Servers;
+McpStoreClient.Agents = Agents;
+McpStoreClient.Gateway = Gateway;
 
 export declare namespace McpStoreClient {
   export type RequestOptions = Opts.RequestOptions;
 
   export import CursorPage = Pagination.CursorPage;
   export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
+
+  export import AgentCursorPage = Pagination.AgentCursorPage;
+  export {
+    type AgentCursorPageParams as AgentCursorPageParams,
+    type AgentCursorPageResponse as AgentCursorPageResponse,
+  };
 
   export { Health as Health, type HealthCheckResponse as HealthCheckResponse };
 
@@ -805,7 +847,9 @@ export declare namespace McpStoreClient {
   export {
     Servers as Servers,
     type Server as Server,
+    type ServerCreate as ServerCreate,
     type ServerDetail as ServerDetail,
+    type ServerUpdate as ServerUpdate,
     type ServerCreateResponse as ServerCreateResponse,
     type ServerRetrieveResponse as ServerRetrieveResponse,
     type ServerUpdateResponse as ServerUpdateResponse,
@@ -818,6 +862,33 @@ export declare namespace McpStoreClient {
     type ServerRetrieveByPackageParams as ServerRetrieveByPackageParams,
   };
 
+  export {
+    Agents as Agents,
+    type Agent as Agent,
+    type AgentCreate as AgentCreate,
+    type AgentUpdate as AgentUpdate,
+    type AgentCreateResponse as AgentCreateResponse,
+    type AgentRetrieveResponse as AgentRetrieveResponse,
+    type AgentUpdateResponse as AgentUpdateResponse,
+    type AgentDeleteResponse as AgentDeleteResponse,
+    type AgentRetrieveBySlugResponse as AgentRetrieveBySlugResponse,
+    type AgentsAgentCursorPage as AgentsAgentCursorPage,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
+    type AgentRetrieveBySlugParams as AgentRetrieveBySlugParams,
+  };
+
+  export {
+    Gateway as Gateway,
+    type GatewayPublishServerResponse as GatewayPublishServerResponse,
+    type GatewayUnpublishServerResponse as GatewayUnpublishServerResponse,
+    type GatewayUpdateServerResponse as GatewayUpdateServerResponse,
+    type GatewayUnpublishServerParams as GatewayUnpublishServerParams,
+    type GatewayUpdateServerParams as GatewayUpdateServerParams,
+  };
+
+  export type AgentPlatform = API.AgentPlatform;
   export type Argument = API.Argument;
   export type Input = API.Input;
   export type KeyValueInput = API.KeyValueInput;

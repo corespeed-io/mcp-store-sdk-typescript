@@ -38,6 +38,7 @@ The full API of this library can be found in [api.md](api.md).
 import McpStoreClient from '@corespeed/mcp-store-client';
 
 const client = new McpStoreClient({
+  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'development', // defaults to 'production'
 });
 
@@ -55,6 +56,7 @@ This library includes TypeScript definitions for all request params and response
 import McpStoreClient from '@corespeed/mcp-store-client';
 
 const client = new McpStoreClient({
+  apiKey: process.env['MCP_STORE_SDK_API_KEY'], // This is the default and can be omitted
   environment: 'development', // defaults to 'production'
 });
 

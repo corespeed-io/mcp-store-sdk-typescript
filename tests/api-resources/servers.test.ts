@@ -36,7 +36,8 @@ describe('resource servers', () => {
       repository: { source: 'source', url: 'https://example.com' },
       scope: 'scope',
       version: 'version',
-      documentationUrl: 'https://example.com',
+      author: 'author',
+      category: 'category',
       iconUrl: 'https://example.com',
       packages: [
         {
@@ -214,6 +215,7 @@ describe('resource servers', () => {
           ],
         },
       ],
+      tags: ['string'],
     });
   });
 
@@ -248,6 +250,8 @@ describe('resource servers', () => {
       client.servers.update(
         'id',
         {
+          author: 'author',
+          category: 'category',
           description: 'description',
           displayName: 'displayName',
           documentationUrl: 'https://example.com',
@@ -431,6 +435,7 @@ describe('resource servers', () => {
           ],
           repository: { source: 'source', url: 'https://example.com' },
           scope: 'scope',
+          tags: ['string'],
           version: 'version',
         },
         { path: '/_stainless_unknown_path' },
@@ -457,7 +462,7 @@ describe('resource servers', () => {
       client.servers.list(
         {
           cursor: 'eyJpZCI6IjEyMyJ9',
-          limit: 12,
+          limit: 10,
           search: 'serverName',
           sort: 'updatedAt',
         },

@@ -1,5 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export interface AgentPlatform {
+  platform: string;
+
+  url: string;
+}
+
 export interface Argument {
   type: 'positional' | 'named';
 
