@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.0 (2026-01-17)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** add agent marketplace endpoint ([117968a](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/117968ac908bbfd4449d1d501b03bfba63ac6afe))
+
 ## 1.10.0 (2026-01-17)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.9.0...v1.10.0)
