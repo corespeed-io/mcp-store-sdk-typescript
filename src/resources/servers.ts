@@ -88,9 +88,47 @@ export interface Server {
 
   version: string;
 
+  author?: string;
+
+  category?: string;
+
+  createdAt?: string;
+
   documentationUrl?: string;
 
   iconUrl?: string;
+
+  tags?: Array<string>;
+}
+
+export interface ServerCreate {
+  description: string;
+
+  displayName: string;
+
+  packageName: string;
+
+  repository: Shared.Repository;
+
+  scope: string;
+
+  version: string;
+
+  author?: string;
+
+  category?: string;
+
+  /**
+   * External icon URL. The server will fetch the icon from this URL and upload it to
+   * R2 storage. The response will contain the R2 URL.
+   */
+  iconUrl?: string;
+
+  packages?: Array<Shared.Package>;
+
+  remotes?: Array<Shared.Remote>;
+
+  tags?: Array<string>;
 }
 
 export interface ServerDetail {
@@ -110,6 +148,12 @@ export interface ServerDetail {
 
   version: string;
 
+  author?: string;
+
+  category?: string;
+
+  createdAt?: string;
+
   documentationUrl?: string;
 
   iconUrl?: string;
@@ -117,6 +161,41 @@ export interface ServerDetail {
   packages?: Array<Shared.Package>;
 
   remotes?: Array<Shared.Remote>;
+
+  tags?: Array<string>;
+}
+
+export interface ServerUpdate {
+  author?: string;
+
+  category?: string;
+
+  description?: string;
+
+  displayName?: string;
+
+  documentationUrl?: string;
+
+  /**
+   * External icon URL. If provided, the server will fetch the icon from this URL,
+   * upload it to R2 storage, and delete the old icon. The response will contain the
+   * new R2 URL.
+   */
+  iconUrl?: string;
+
+  packageName?: string;
+
+  packages?: Array<Shared.Package>;
+
+  remotes?: Array<Shared.Remote>;
+
+  repository?: Shared.Repository;
+
+  scope?: string;
+
+  tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface ServerCreateResponse {
@@ -140,100 +219,65 @@ export interface ServerRetrieveByPackageResponse {
 }
 
 export interface ServerCreateParams {
-  /**
-   * Description of the MCP server
-   */
   description: string;
 
-  /**
-   * The display name of the MCP server
-   */
   displayName: string;
 
-  /**
-   * The package name of the MCP server
-   */
   packageName: string;
 
   repository: Shared.Repository;
 
-  /**
-   * The scope of the MCP server
-   */
   scope: string;
 
-  /**
-   * Version of the MCP server
-   */
   version: string;
 
-  /**
-   * URL to the documentation
-   */
-  documentationUrl?: string;
+  author?: string;
+
+  category?: string;
 
   /**
-   * External icon URL (will be fetched and stored in R2)
+   * External icon URL. The server will fetch the icon from this URL and upload it to
+   * R2 storage. The response will contain the R2 URL.
    */
   iconUrl?: string;
 
-  /**
-   * Package configurations
-   */
   packages?: Array<Shared.Package>;
 
-  /**
-   * Remote configurations
-   */
   remotes?: Array<Shared.Remote>;
+
+  tags?: Array<string>;
 }
 
 export interface ServerUpdateParams {
-  /**
-   * Description of the MCP server
-   */
+  author?: string;
+
+  category?: string;
+
   description?: string;
 
-  /**
-   * The display name of the MCP server
-   */
   displayName?: string;
 
-  /**
-   * URL to the documentation
-   */
   documentationUrl?: string;
 
   /**
-   * External icon URL (will be fetched and stored in R2, replacing old icon)
+   * External icon URL. If provided, the server will fetch the icon from this URL,
+   * upload it to R2 storage, and delete the old icon. The response will contain the
+   * new R2 URL.
    */
   iconUrl?: string;
 
-  /**
-   * The package name of the MCP server
-   */
   packageName?: string;
 
-  /**
-   * Package configurations
-   */
   packages?: Array<Shared.Package>;
 
-  /**
-   * Remote configurations
-   */
   remotes?: Array<Shared.Remote>;
 
   repository?: Shared.Repository;
 
-  /**
-   * The scope of the MCP server
-   */
   scope?: string;
 
-  /**
-   * Version of the MCP server
-   */
+  tags?: Array<string>;
+
   version?: string;
 }
 
@@ -260,7 +304,9 @@ export interface ServerRetrieveByPackageParams {
 export declare namespace Servers {
   export {
     type Server as Server,
+    type ServerCreate as ServerCreate,
     type ServerDetail as ServerDetail,
+    type ServerUpdate as ServerUpdate,
     type ServerCreateResponse as ServerCreateResponse,
     type ServerRetrieveResponse as ServerRetrieveResponse,
     type ServerUpdateResponse as ServerUpdateResponse,
