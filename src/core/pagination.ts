@@ -167,3 +167,64 @@ export class CursorPage<Item> extends AbstractPage<Item> implements CursorPageRe
     };
   }
 }
+
+export interface AgentCursorPageResponse<Item> {
+  agents: Array<Item>;
+
+  /**
+   * Next page cursor
+   */
+  next: string | null;
+}
+
+export interface AgentCursorPageParams {
+  /**
+   * Cursor for pagination
+   */
+  cursor?: string;
+
+  /**
+   * Maximum number of agents to return
+   */
+  limit?: number;
+}
+
+export class AgentCursorPage<Item> extends AbstractPage<Item> implements AgentCursorPageResponse<Item> {
+  agents: Array<Item>;
+
+  /**
+   * Next page cursor
+   */
+  next: string | null;
+
+  constructor(
+    client: McpStoreClient,
+    response: Response,
+    body: AgentCursorPageResponse<Item>,
+    options: FinalRequestOptions,
+  ) {
+    super(client, response, body, options);
+
+    this.agents = body.agents || [];
+    this.next = body.next || null;
+  }
+
+  getPaginatedItems(): Item[] {
+    return this.agents ?? [];
+  }
+
+  nextPageRequestOptions(): PageRequestOptions | null {
+    const cursor = this.next;
+    if (!cursor) {
+      return null;
+    }
+
+    return {
+      ...this.options,
+      query: {
+        ...maybeObj(this.options.query),
+        cursor,
+      },
+    };
+  }
+}
