@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.1 (2026-01-17)
+
+Full Changelog: [v1.11.0...v1.11.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.11.0...v1.11.1)
+
+### Chores
+
+* remove custom code ([6f09859](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/6f098591144a032f4feb30661fa6754e4b560ece))
+
 ## 1.11.0 (2026-01-17)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.10.0...v1.11.0)
