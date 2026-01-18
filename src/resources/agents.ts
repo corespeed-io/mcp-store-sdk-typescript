@@ -198,20 +198,19 @@ export interface AgentUpdateParams {
 
 export interface AgentListParams extends AgentCursorPageParams {
   /**
-   * Search term to filter agents by name or description
+   * Filter by name or description
    */
   search?: string;
 
   /**
-   * Field to sort by
+   * Sort by 'displayName' or 'updatedAt' (default)
    */
   sort?: string;
 }
 
 export interface AgentRetrieveBySlugParams {
   /**
-   * The scope of the agent (e.g., '@corespeed', 'openai'). The @ symbol is optional
-   * and will be added automatically if not provided.
+   * The scope of the agent (e.g., '@corespeed', 'openai'). The @ symbol is optional.
    */
   scope: string;
 }

@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.12.0 (2026-01-18)
+
+Full Changelog: [v1.11.1...v1.12.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.11.1...v1.12.0)
+
+### Features
+
+* **api:** add agent store api ([58dffb2](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/58dffb2225fe05a49fa2d28087232e221bb6af7e))
+* **api:** manual updates ([ece5b54](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/ece5b54526ad42c705c8a373048d206867d748ee))
+
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([b866581](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/b866581c53356609e210758a8f2d8916dbb1fcc2))
+
 ## 1.11.1 (2026-01-17)
 
 Full Changelog: [v1.11.0...v1.11.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.11.0...v1.11.1)

@@ -43,7 +43,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.agents.retrieve('id');
+    const responsePromise = client.agents.retrieve('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -55,7 +55,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('update', async () => {
-    const responsePromise = client.agents.update('id');
+    const responsePromise = client.agents.update('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -70,7 +70,7 @@ describe('resource agents', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.agents.update(
-        'id',
+        '12345',
         {
           agent: { platform: 'agent0', url: 'https://agent0.example.com/agents/abc123' },
           author: 'author',
@@ -105,8 +105,9 @@ describe('resource agents', () => {
     await expect(
       client.agents.list(
         {
-          cursor: 'eyJpZCI6IjEyMyJ9',
-          limit: 10,
+          cursor:
+            'eyJzb3J0RmllbGQiOiJ1cGRhdGVkQXQiLCJzb3J0VmFsdWUiOiIyMDI1LTAxLTAxVDEyOjAwOjAwWiIsImxhc3RJZCI6IjEyMzQ1In0=',
+          limit: 0,
           search: 'assistant',
           sort: 'updatedAt',
         },
@@ -117,7 +118,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('delete', async () => {
-    const responsePromise = client.agents.delete('id');
+    const responsePromise = client.agents.delete('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -129,7 +130,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: only required params', async () => {
-    const responsePromise = client.agents.retrieveBySlug('slug', { scope: 'scope' });
+    const responsePromise = client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -141,6 +142,6 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: required and optional params', async () => {
-    const response = await client.agents.retrieveBySlug('slug', { scope: 'scope' });
+    const response = await client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
   });
 });

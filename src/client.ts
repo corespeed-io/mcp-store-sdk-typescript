@@ -47,6 +47,7 @@ import {
 } from './resources/documentation';
 import {
   Gateway,
+  GatewayPublishServerParams,
   GatewayPublishServerResponse,
   GatewayUnpublishServerParams,
   GatewayUnpublishServerResponse,
@@ -54,6 +55,7 @@ import {
   GatewayUpdateServerResponse,
 } from './resources/gateway';
 import { Health, HealthCheckResponse } from './resources/health';
+import { Me, MeListServersParams, MeResponse } from './resources/me';
 import {
   Server,
   ServerCreate,
@@ -813,6 +815,7 @@ export class McpStoreClient {
 
   health: API.Health = new API.Health(this);
   documentation: API.Documentation = new API.Documentation(this);
+  me: API.Me = new API.Me(this);
   servers: API.Servers = new API.Servers(this);
   agents: API.Agents = new API.Agents(this);
   gateway: API.Gateway = new API.Gateway(this);
@@ -820,6 +823,7 @@ export class McpStoreClient {
 
 McpStoreClient.Health = Health;
 McpStoreClient.Documentation = Documentation;
+McpStoreClient.Me = Me;
 McpStoreClient.Servers = Servers;
 McpStoreClient.Agents = Agents;
 McpStoreClient.Gateway = Gateway;
@@ -843,6 +847,8 @@ export declare namespace McpStoreClient {
     type DocumentationProxyResponse as DocumentationProxyResponse,
     type DocumentationProxyParams as DocumentationProxyParams,
   };
+
+  export { Me as Me, type MeResponse as MeResponse, type MeListServersParams as MeListServersParams };
 
   export {
     Servers as Servers,
@@ -884,13 +890,13 @@ export declare namespace McpStoreClient {
     type GatewayPublishServerResponse as GatewayPublishServerResponse,
     type GatewayUnpublishServerResponse as GatewayUnpublishServerResponse,
     type GatewayUpdateServerResponse as GatewayUpdateServerResponse,
+    type GatewayPublishServerParams as GatewayPublishServerParams,
     type GatewayUnpublishServerParams as GatewayUnpublishServerParams,
     type GatewayUpdateServerParams as GatewayUpdateServerParams,
   };
 
   export type AgentPlatform = API.AgentPlatform;
   export type Argument = API.Argument;
-  export type Input = API.Input;
   export type KeyValueInput = API.KeyValueInput;
   export type Package = API.Package;
   export type Remote = API.Remote;
