@@ -14,7 +14,6 @@ describe('resource servers', () => {
       description: 'description',
       displayName: 'displayName',
       packageName: 'packageName',
-      repository: { source: 'source', url: 'https://example.com' },
       scope: 'scope',
       version: 'version',
     });
@@ -33,7 +32,6 @@ describe('resource servers', () => {
       description: 'description',
       displayName: 'displayName',
       packageName: 'packageName',
-      repository: { source: 'source', url: 'https://example.com' },
       scope: 'scope',
       version: 'version',
       author: 'author',
@@ -53,34 +51,10 @@ describe('resource servers', () => {
               format: 'string',
               isRequired: true,
               isSecret: true,
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              properties: { foo: 'bar' },
               template: 'template',
               value: 'value',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              variables: { foo: 'bar' },
             },
           ],
           packageArguments: [
@@ -94,35 +68,11 @@ describe('resource servers', () => {
               isRequired: true,
               isSecret: true,
               name: 'name',
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              properties: { foo: 'bar' },
               template: 'template',
               value: 'value',
               valueHint: 'valueHint',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              variables: { foo: 'bar' },
             },
           ],
           runtimeArguments: [
@@ -136,35 +86,11 @@ describe('resource servers', () => {
               isRequired: true,
               isSecret: true,
               name: 'name',
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              properties: { foo: 'bar' },
               template: 'template',
               value: 'value',
               valueHint: 'valueHint',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              variables: { foo: 'bar' },
             },
           ],
           runtimeHint: 'runtimeHint',
@@ -183,45 +109,22 @@ describe('resource servers', () => {
               format: 'string',
               isRequired: true,
               isSecret: true,
-              properties: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              properties: { foo: 'bar' },
               template: 'template',
               value: 'value',
-              variables: {
-                foo: {
-                  choices: ['string'],
-                  default: 'default',
-                  description: 'description',
-                  format: 'string',
-                  isRequired: true,
-                  isSecret: true,
-                  properties: {},
-                  template: 'template',
-                  value: 'value',
-                },
-              },
+              variables: { foo: 'bar' },
             },
           ],
         },
       ],
+      repository: { source: 'source', url: 'https://example.com' },
       tags: ['string'],
     });
   });
 
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.servers.retrieve('id');
+    const responsePromise = client.servers.retrieve('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -233,7 +136,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('update', async () => {
-    const responsePromise = client.servers.update('id');
+    const responsePromise = client.servers.update('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -248,7 +151,7 @@ describe('resource servers', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.servers.update(
-        'id',
+        '12345',
         {
           author: 'author',
           category: 'category',
@@ -271,34 +174,10 @@ describe('resource servers', () => {
                   format: 'string',
                   isRequired: true,
                   isSecret: true,
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  properties: { foo: 'bar' },
                   template: 'template',
                   value: 'value',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  variables: { foo: 'bar' },
                 },
               ],
               packageArguments: [
@@ -312,35 +191,11 @@ describe('resource servers', () => {
                   isRequired: true,
                   isSecret: true,
                   name: 'name',
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  properties: { foo: 'bar' },
                   template: 'template',
                   value: 'value',
                   valueHint: 'valueHint',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  variables: { foo: 'bar' },
                 },
               ],
               runtimeArguments: [
@@ -354,35 +209,11 @@ describe('resource servers', () => {
                   isRequired: true,
                   isSecret: true,
                   name: 'name',
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  properties: { foo: 'bar' },
                   template: 'template',
                   value: 'value',
                   valueHint: 'valueHint',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  variables: { foo: 'bar' },
                 },
               ],
               runtimeHint: 'runtimeHint',
@@ -401,34 +232,10 @@ describe('resource servers', () => {
                   format: 'string',
                   isRequired: true,
                   isSecret: true,
-                  properties: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  properties: { foo: 'bar' },
                   template: 'template',
                   value: 'value',
-                  variables: {
-                    foo: {
-                      choices: ['string'],
-                      default: 'default',
-                      description: 'description',
-                      format: 'string',
-                      isRequired: true,
-                      isSecret: true,
-                      properties: {},
-                      template: 'template',
-                      value: 'value',
-                    },
-                  },
+                  variables: { foo: 'bar' },
                 },
               ],
             },
@@ -461,9 +268,10 @@ describe('resource servers', () => {
     await expect(
       client.servers.list(
         {
-          cursor: 'eyJpZCI6IjEyMyJ9',
-          limit: 10,
-          search: 'serverName',
+          cursor:
+            'eyJzb3J0RmllbGQiOiJ1cGRhdGVkQXQiLCJzb3J0VmFsdWUiOiIyMDI1LTAxLTAxVDEyOjAwOjAwWiIsImxhc3RJZCI6IjEyMzQ1In0=',
+          limit: 0,
+          search: 'github',
           sort: 'updatedAt',
         },
         { path: '/_stainless_unknown_path' },
@@ -473,7 +281,7 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('delete', async () => {
-    const responsePromise = client.servers.delete('id');
+    const responsePromise = client.servers.delete('12345');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -485,7 +293,9 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('retrieveByPackage: only required params', async () => {
-    const responsePromise = client.servers.retrieveByPackage('packageName', { scope: 'scope' });
+    const responsePromise = client.servers.retrieveByPackage('server-github', {
+      scope: '@modelcontextprotocol',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -497,6 +307,8 @@ describe('resource servers', () => {
 
   // Prism tests are disabled
   test.skip('retrieveByPackage: required and optional params', async () => {
-    const response = await client.servers.retrieveByPackage('packageName', { scope: 'scope' });
+    const response = await client.servers.retrieveByPackage('server-github', {
+      scope: '@modelcontextprotocol',
+    });
   });
 });

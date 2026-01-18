@@ -25,7 +25,7 @@ export interface Argument {
 
   name?: string;
 
-  properties?: { [key: string]: Input };
+  properties?: { [key: string]: unknown };
 
   template?: string;
 
@@ -33,27 +33,7 @@ export interface Argument {
 
   valueHint?: string;
 
-  variables?: { [key: string]: Input };
-}
-
-export interface Input {
-  choices?: Array<string>;
-
-  default?: string;
-
-  description?: string;
-
-  format?: 'string' | 'number' | 'boolean' | 'file_path';
-
-  isRequired?: boolean;
-
-  isSecret?: boolean;
-
-  properties?: { [key: string]: Input };
-
-  template?: string;
-
-  value?: string;
+  variables?: { [key: string]: unknown };
 }
 
 export interface KeyValueInput {
@@ -71,13 +51,13 @@ export interface KeyValueInput {
 
   isSecret?: boolean;
 
-  properties?: { [key: string]: Input };
+  properties?: { [key: string]: unknown };
 
   template?: string;
 
   value?: string;
 
-  variables?: { [key: string]: Input };
+  variables?: { [key: string]: unknown };
 }
 
 export interface Package {
