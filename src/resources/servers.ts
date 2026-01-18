@@ -80,8 +80,6 @@ export interface Server {
 
   packageName: string;
 
-  repository: Shared.Repository;
-
   scope: string;
 
   updatedAt: string;
@@ -94,9 +92,15 @@ export interface Server {
 
   createdAt?: string;
 
+  developerId?: string;
+
   documentationUrl?: string;
 
   iconUrl?: string;
+
+  repository?: Shared.Repository | null;
+
+  source?: 'gateway' | 'api' | 'seed';
 
   tags?: Array<string>;
 }
@@ -107,8 +111,6 @@ export interface ServerCreate {
   displayName: string;
 
   packageName: string;
-
-  repository: Shared.Repository;
 
   scope: string;
 
@@ -128,6 +130,8 @@ export interface ServerCreate {
 
   remotes?: Array<Shared.Remote>;
 
+  repository?: Shared.Repository | null;
+
   tags?: Array<string>;
 }
 
@@ -139,8 +143,6 @@ export interface ServerDetail {
   displayName: string;
 
   packageName: string;
-
-  repository: Shared.Repository;
 
   scope: string;
 
@@ -154,6 +156,8 @@ export interface ServerDetail {
 
   createdAt?: string;
 
+  developerId?: string;
+
   documentationUrl?: string;
 
   iconUrl?: string;
@@ -161,6 +165,10 @@ export interface ServerDetail {
   packages?: Array<Shared.Package>;
 
   remotes?: Array<Shared.Remote>;
+
+  repository?: Shared.Repository | null;
+
+  source?: 'gateway' | 'api' | 'seed';
 
   tags?: Array<string>;
 }
@@ -189,7 +197,7 @@ export interface ServerUpdate {
 
   remotes?: Array<Shared.Remote>;
 
-  repository?: Shared.Repository;
+  repository?: Shared.Repository | null;
 
   scope?: string;
 
@@ -225,8 +233,6 @@ export interface ServerCreateParams {
 
   packageName: string;
 
-  repository: Shared.Repository;
-
   scope: string;
 
   version: string;
@@ -244,6 +250,8 @@ export interface ServerCreateParams {
   packages?: Array<Shared.Package>;
 
   remotes?: Array<Shared.Remote>;
+
+  repository?: Shared.Repository | null;
 
   tags?: Array<string>;
 }
@@ -272,7 +280,7 @@ export interface ServerUpdateParams {
 
   remotes?: Array<Shared.Remote>;
 
-  repository?: Shared.Repository;
+  repository?: Shared.Repository | null;
 
   scope?: string;
 
@@ -283,12 +291,12 @@ export interface ServerUpdateParams {
 
 export interface ServerListParams extends CursorPageParams {
   /**
-   * Search term to filter servers by name or description
+   * Filter by name or description
    */
   search?: string;
 
   /**
-   * Field to sort by
+   * Sort by 'displayName' or 'updatedAt' (default)
    */
   sort?: string;
 }
@@ -296,7 +304,7 @@ export interface ServerListParams extends CursorPageParams {
 export interface ServerRetrieveByPackageParams {
   /**
    * The scope of the MCP server (e.g., '@modelcontextprotocol', 'github'). The @
-   * symbol is optional and will be added automatically if not provided.
+   * symbol is optional.
    */
   scope: string;
 }

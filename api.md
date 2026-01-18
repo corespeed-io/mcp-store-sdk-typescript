@@ -4,7 +4,6 @@ Types:
 
 - <code><a href="./src/resources/shared.ts">AgentPlatform</a></code>
 - <code><a href="./src/resources/shared.ts">Argument</a></code>
-- <code><a href="./src/resources/shared.ts">Input</a></code>
 - <code><a href="./src/resources/shared.ts">KeyValueInput</a></code>
 - <code><a href="./src/resources/shared.ts">Package</a></code>
 - <code><a href="./src/resources/shared.ts">Remote</a></code>
@@ -29,6 +28,17 @@ Types:
 Methods:
 
 - <code title="get /api/v1/documentation/proxy">client.documentation.<a href="./src/resources/documentation.ts">proxy</a>({ ...params }) -> DocumentationProxyResponse</code>
+
+# Me
+
+Types:
+
+- <code><a href="./src/resources/me.ts">MeResponse</a></code>
+
+Methods:
+
+- <code title="get /api/v1/me">client.me.<a href="./src/resources/me.ts">retrieve</a>() -> MeResponse</code>
+- <code title="get /api/v1/me/servers">client.me.<a href="./src/resources/me.ts">listServers</a>({ ...params }) -> ServersCursorPage</code>
 
 # Servers
 
@@ -85,6 +95,6 @@ Types:
 
 Methods:
 
-- <code title="post /api/v1/gateway/servers">client.gateway.<a href="./src/resources/gateway.ts">publishServer</a>() -> GatewayPublishServerResponse</code>
+- <code title="post /api/v1/gateway/servers">client.gateway.<a href="./src/resources/gateway.ts">publishServer</a>({ ...params }) -> GatewayPublishServerResponse</code>
 - <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(packageName, { ...params }) -> GatewayUnpublishServerResponse</code>
-- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(packageName, { ...params }) -> GatewayUpdateServerResponse</code>
+- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(pathPackageName, { ...params }) -> GatewayUpdateServerResponse</code>

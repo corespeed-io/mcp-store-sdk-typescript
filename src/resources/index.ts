@@ -27,10 +27,12 @@ export {
   type GatewayPublishServerResponse,
   type GatewayUnpublishServerResponse,
   type GatewayUpdateServerResponse,
+  type GatewayPublishServerParams,
   type GatewayUnpublishServerParams,
   type GatewayUpdateServerParams,
 } from './gateway';
 export { Health, type HealthCheckResponse } from './health';
+export { Me, type MeResponse, type MeListServersParams } from './me';
 export {
   Servers,
   type Server,
