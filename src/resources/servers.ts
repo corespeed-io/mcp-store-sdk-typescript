@@ -191,15 +191,11 @@ export interface ServerUpdate {
    */
   iconUrl?: string;
 
-  packageName?: string;
-
   packages?: Array<Shared.Package>;
 
   remotes?: Array<Shared.Remote>;
 
   repository?: Shared.Repository | null;
-
-  scope?: string;
 
   tags?: Array<string>;
 
@@ -274,15 +270,11 @@ export interface ServerUpdateParams {
    */
   iconUrl?: string;
 
-  packageName?: string;
-
   packages?: Array<Shared.Package>;
 
   remotes?: Array<Shared.Remote>;
 
   repository?: Shared.Repository | null;
-
-  scope?: string;
 
   tags?: Array<string>;
 

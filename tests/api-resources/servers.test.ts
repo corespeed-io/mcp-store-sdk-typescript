@@ -159,7 +159,6 @@ describe('resource servers', () => {
           displayName: 'displayName',
           documentationUrl: 'https://example.com',
           iconUrl: 'https://example.com',
-          packageName: 'packageName',
           packages: [
             {
               name: 'name',
@@ -241,7 +240,6 @@ describe('resource servers', () => {
             },
           ],
           repository: { source: 'source', url: 'https://example.com' },
-          scope: 'scope',
           tags: ['string'],
           version: 'version',
         },

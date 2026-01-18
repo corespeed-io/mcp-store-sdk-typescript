@@ -145,9 +145,7 @@ describe('resource gateway', () => {
 
   // Prism tests are disabled
   test.skip('updateServer: only required params', async () => {
-    const responsePromise = client.gateway.updateServer('server-github', {
-      path_scope: '@modelcontextprotocol',
-    });
+    const responsePromise = client.gateway.updateServer('server-github', { scope: '@modelcontextprotocol' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -160,14 +158,13 @@ describe('resource gateway', () => {
   // Prism tests are disabled
   test.skip('updateServer: required and optional params', async () => {
     const response = await client.gateway.updateServer('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
       author: 'author',
       category: 'category',
       description: 'description',
       displayName: 'displayName',
       documentationUrl: 'https://example.com',
       iconUrl: 'https://example.com',
-      body_packageName: 'packageName',
       packages: [
         {
           name: 'name',
@@ -249,7 +246,6 @@ describe('resource gateway', () => {
         },
       ],
       repository: { source: 'source', url: 'https://example.com' },
-      body_scope: 'scope',
       tags: ['string'],
       version: 'version',
     });

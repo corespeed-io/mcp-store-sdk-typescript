@@ -97,4 +97,4 @@ Methods:
 
 - <code title="post /api/v1/gateway/servers">client.gateway.<a href="./src/resources/gateway.ts">publishServer</a>({ ...params }) -> GatewayPublishServerResponse</code>
 - <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(packageName, { ...params }) -> GatewayUnpublishServerResponse</code>
-- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(pathPackageName, { ...params }) -> GatewayUpdateServerResponse</code>
+- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(packageName, { ...params }) -> GatewayUpdateServerResponse</code>
