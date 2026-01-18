@@ -34,15 +34,12 @@ export class Gateway extends APIResource {
    * Update an existing MCP server from the gateway. Requires gateway service token.
    */
   updateServer(
-    pathPackageName: string,
+    packageName: string,
     params: GatewayUpdateServerParams,
     options?: RequestOptions,
   ): APIPromise<GatewayUpdateServerResponse> {
-    const { path_scope, ...body } = params;
-    return this._client.put(path`/api/v1/gateway/servers/${path_scope}/${pathPackageName}`, {
-      body,
-      ...options,
-    });
+    const { scope, ...body } = params;
+    return this._client.put(path`/api/v1/gateway/servers/${scope}/${packageName}`, { body, ...options });
   }
 }
 
@@ -101,7 +98,7 @@ export interface GatewayUpdateServerParams {
    * Path param: The scope of the MCP server (e.g., '@modelcontextprotocol',
    * 'github'). The @ symbol is optional.
    */
-  path_scope: string;
+  scope: string;
 
   /**
    * Body param
@@ -138,11 +135,6 @@ export interface GatewayUpdateServerParams {
   /**
    * Body param
    */
-  body_packageName?: string;
-
-  /**
-   * Body param
-   */
   packages?: Array<Shared.Package>;
 
   /**
@@ -154,11 +146,6 @@ export interface GatewayUpdateServerParams {
    * Body param
    */
   repository?: Shared.Repository | null;
-
-  /**
-   * Body param
-   */
-  body_scope?: string;
 
   /**
    * Body param
