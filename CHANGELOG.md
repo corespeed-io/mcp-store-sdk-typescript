@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.12.1 (2026-01-19)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.12.0...v1.12.1)
+
+### Bug Fixes
+
+* **deno:** patch types.ts to fix deno check in sandbox environments ([340bbb4](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/340bbb49c799021541db47f0ffd1f56d9845c48f))
+
 ## 1.12.0 (2026-01-18)
 
 Full Changelog: [v1.11.1...v1.12.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.11.1...v1.12.0)
