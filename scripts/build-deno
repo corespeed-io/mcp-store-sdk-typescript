@@ -11,4 +11,7 @@ for file in README.md LICENSE CHANGELOG.md; do
   if [ -e "${file}" ]; then cp "${file}" dist-deno; fi
 done
 
+# Patch types.ts to remove node_modules imports that break deno check
+node scripts/utils/patch-deno-types.cjs
+
 node scripts/utils/convert-jsr-readme.cjs ./dist-deno/README.md
