@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^@corespeed/agent-store-client(/.*)?',
+              regex: '^@corespeed/mcp-store-client(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

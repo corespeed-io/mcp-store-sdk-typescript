@@ -1,6 +1,6 @@
 import fs from 'fs';
-import type { ResponseLike } from '@corespeed/agent-store-client/internal/to-file';
-import { toFile } from '@corespeed/agent-store-client/core/uploads';
+import type { ResponseLike } from '@corespeed/mcp-store-client/internal/to-file';
+import { toFile } from '@corespeed/mcp-store-client/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('@corespeed/agent-store-client/core/uploads');
+    const uploads = await import('@corespeed/mcp-store-client/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(

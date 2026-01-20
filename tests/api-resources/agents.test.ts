@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import McpStoreClient from '@corespeed/agent-store-client';
+import McpStoreClient from '@corespeed/mcp-store-client';
 
 const client = new McpStoreClient({
   apiKey: 'My API Key',
@@ -130,7 +130,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: only required params', async () => {
-    const responsePromise = client.agents.retrieveBySlug('assistant', { path_scope: '@corespeed' });
+    const responsePromise = client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -142,6 +142,6 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: required and optional params', async () => {
-    const response = await client.agents.retrieveBySlug('assistant', { path_scope: '@corespeed' });
+    const response = await client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
   });
 });
