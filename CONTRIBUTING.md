@@ -55,12 +55,12 @@ $ cd mcp-store-sdk-typescript
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link @corespeed/agent-store-client
+$ yarn link @corespeed/mcp-store-client
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @corespeed/agent-store-client
+$ pnpm link -—global @corespeed/mcp-store-client
 ```
 
 ## Running tests

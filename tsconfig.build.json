@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@corespeed/agent-store-client/*": ["./dist/src/*"],
-      "@corespeed/agent-store-client": ["./dist/src/index.ts"]
+      "@corespeed/mcp-store-client/*": ["./dist/src/*"],
+      "@corespeed/mcp-store-client": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
