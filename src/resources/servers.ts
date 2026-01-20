@@ -60,12 +60,12 @@ export class Servers extends APIResource {
    * package name
    */
   retrieveByPackage(
-    packageName: string,
+    pathPackageName: string,
     params: ServerRetrieveByPackageParams,
     options?: RequestOptions,
   ): APIPromise<ServerRetrieveByPackageResponse> {
-    const { scope } = params;
-    return this._client.get(path`/api/v1/servers/${scope}/${packageName}`, options);
+    const { path_scope } = params;
+    return this._client.get(path`/api/v1/servers/${path_scope}/${pathPackageName}`, options);
   }
 }
 
@@ -298,7 +298,7 @@ export interface ServerRetrieveByPackageParams {
    * The scope of the MCP server (e.g., '@modelcontextprotocol', 'github'). The @
    * symbol is optional.
    */
-  scope: string;
+  path_scope: string;
 }
 
 export declare namespace Servers {

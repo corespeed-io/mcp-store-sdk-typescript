@@ -50,3 +50,19 @@ export {
   type ServerRetrieveByPackageParams,
   type ServersCursorPage,
 } from './servers';
+export {
+  Skills,
+  type Skill,
+  type SkillCreate,
+  type SkillUpdate,
+  type SkillCreateResponse,
+  type SkillRetrieveResponse,
+  type SkillUpdateResponse,
+  type SkillDeleteResponse,
+  type SkillRetrieveBySlugResponse,
+  type SkillCreateParams,
+  type SkillUpdateParams,
+  type SkillListParams,
+  type SkillRetrieveBySlugParams,
+  type SkillsSkillCursorPage,
+} from './skills';

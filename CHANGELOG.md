@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.0 (2026-01-20)
+
+Full Changelog: [v1.12.1...v1.13.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.12.1...v1.13.0)
+
+### Features
+
+* **api:** add agent skills ([115645b](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/115645bbf9ab059a6f7705cd5d7482f697238885))
+
 ## 1.12.1 (2026-01-19)
 
 Full Changelog: [v1.12.0...v1.12.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.12.0...v1.12.1)
