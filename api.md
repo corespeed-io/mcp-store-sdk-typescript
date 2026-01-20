@@ -61,7 +61,7 @@ Methods:
 - <code title="put /api/v1/servers/{id}">client.servers.<a href="./src/resources/servers.ts">update</a>(id, { ...params }) -> ServerUpdateResponse</code>
 - <code title="get /api/v1/servers">client.servers.<a href="./src/resources/servers.ts">list</a>({ ...params }) -> ServersCursorPage</code>
 - <code title="delete /api/v1/servers/{id}">client.servers.<a href="./src/resources/servers.ts">delete</a>(id) -> ServerDeleteResponse</code>
-- <code title="get /api/v1/servers/{scope}/{packageName}">client.servers.<a href="./src/resources/servers.ts">retrieveByPackage</a>(packageName, { ...params }) -> ServerRetrieveByPackageResponse</code>
+- <code title="get /api/v1/servers/{scope}/{packageName}">client.servers.<a href="./src/resources/servers.ts">retrieveByPackage</a>(pathPackageName, { ...params }) -> ServerRetrieveByPackageResponse</code>
 
 # Agents
 
@@ -83,7 +83,7 @@ Methods:
 - <code title="put /api/v1/agents/{id}">client.agents.<a href="./src/resources/agents.ts">update</a>(id, { ...params }) -> AgentUpdateResponse</code>
 - <code title="get /api/v1/agents">client.agents.<a href="./src/resources/agents.ts">list</a>({ ...params }) -> AgentsAgentCursorPage</code>
 - <code title="delete /api/v1/agents/{id}">client.agents.<a href="./src/resources/agents.ts">delete</a>(id) -> AgentDeleteResponse</code>
-- <code title="get /api/v1/agents/{scope}/{slug}">client.agents.<a href="./src/resources/agents.ts">retrieveBySlug</a>(slug, { ...params }) -> AgentRetrieveBySlugResponse</code>
+- <code title="get /api/v1/agents/{scope}/{slug}">client.agents.<a href="./src/resources/agents.ts">retrieveBySlug</a>(pathSlug, { ...params }) -> AgentRetrieveBySlugResponse</code>
 
 # Gateway
 
@@ -96,5 +96,27 @@ Types:
 Methods:
 
 - <code title="post /api/v1/gateway/servers">client.gateway.<a href="./src/resources/gateway.ts">publishServer</a>({ ...params }) -> GatewayPublishServerResponse</code>
-- <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(packageName, { ...params }) -> GatewayUnpublishServerResponse</code>
-- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(packageName, { ...params }) -> GatewayUpdateServerResponse</code>
+- <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(pathPackageName, { ...params }) -> GatewayUnpublishServerResponse</code>
+- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(pathPackageName, { ...params }) -> GatewayUpdateServerResponse</code>
+
+# Skills
+
+Types:
+
+- <code><a href="./src/resources/skills.ts">Skill</a></code>
+- <code><a href="./src/resources/skills.ts">SkillCreate</a></code>
+- <code><a href="./src/resources/skills.ts">SkillUpdate</a></code>
+- <code><a href="./src/resources/skills.ts">SkillCreateResponse</a></code>
+- <code><a href="./src/resources/skills.ts">SkillRetrieveResponse</a></code>
+- <code><a href="./src/resources/skills.ts">SkillUpdateResponse</a></code>
+- <code><a href="./src/resources/skills.ts">SkillDeleteResponse</a></code>
+- <code><a href="./src/resources/skills.ts">SkillRetrieveBySlugResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/skills">client.skills.<a href="./src/resources/skills.ts">create</a>({ ...params }) -> SkillCreateResponse</code>
+- <code title="get /api/v1/skills/{id}">client.skills.<a href="./src/resources/skills.ts">retrieve</a>(id) -> SkillRetrieveResponse</code>
+- <code title="put /api/v1/skills/{id}">client.skills.<a href="./src/resources/skills.ts">update</a>(id, { ...params }) -> SkillUpdateResponse</code>
+- <code title="get /api/v1/skills">client.skills.<a href="./src/resources/skills.ts">list</a>({ ...params }) -> SkillsSkillCursorPage</code>
+- <code title="delete /api/v1/skills/{id}">client.skills.<a href="./src/resources/skills.ts">delete</a>(id) -> SkillDeleteResponse</code>
+- <code title="get /api/v1/skills/{scope}/{slug}">client.skills.<a href="./src/resources/skills.ts">retrieveBySlug</a>(slug, { ...params }) -> SkillRetrieveBySlugResponse</code>
