@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "@corespeed/mcp-store-client/*": ["./src/*"],
-      "@corespeed/mcp-store-client": ["./src/index.ts"]
+      "@corespeed/agent-store-client/*": ["./src/*"],
+      "@corespeed/agent-store-client": ["./src/index.ts"]
     },
     "noEmit": true,
 
