@@ -20,6 +20,8 @@ import {
   AgentCursorPageResponse,
   type CursorPageParams,
   CursorPageResponse,
+  type SkillCursorPageParams,
+  SkillCursorPageResponse,
 } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
@@ -73,6 +75,22 @@ import {
   Servers,
   ServersCursorPage,
 } from './resources/servers';
+import {
+  Skill,
+  SkillCreate,
+  SkillCreateParams,
+  SkillCreateResponse,
+  SkillDeleteResponse,
+  SkillListParams,
+  SkillRetrieveBySlugParams,
+  SkillRetrieveBySlugResponse,
+  SkillRetrieveResponse,
+  SkillUpdate,
+  SkillUpdateParams,
+  SkillUpdateResponse,
+  Skills,
+  SkillsSkillCursorPage,
+} from './resources/skills';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -819,6 +837,7 @@ export class McpStoreClient {
   servers: API.Servers = new API.Servers(this);
   agents: API.Agents = new API.Agents(this);
   gateway: API.Gateway = new API.Gateway(this);
+  skills: API.Skills = new API.Skills(this);
 }
 
 McpStoreClient.Health = Health;
@@ -827,6 +846,7 @@ McpStoreClient.Me = Me;
 McpStoreClient.Servers = Servers;
 McpStoreClient.Agents = Agents;
 McpStoreClient.Gateway = Gateway;
+McpStoreClient.Skills = Skills;
 
 export declare namespace McpStoreClient {
   export type RequestOptions = Opts.RequestOptions;
@@ -838,6 +858,12 @@ export declare namespace McpStoreClient {
   export {
     type AgentCursorPageParams as AgentCursorPageParams,
     type AgentCursorPageResponse as AgentCursorPageResponse,
+  };
+
+  export import SkillCursorPage = Pagination.SkillCursorPage;
+  export {
+    type SkillCursorPageParams as SkillCursorPageParams,
+    type SkillCursorPageResponse as SkillCursorPageResponse,
   };
 
   export { Health as Health, type HealthCheckResponse as HealthCheckResponse };
@@ -893,6 +919,23 @@ export declare namespace McpStoreClient {
     type GatewayPublishServerParams as GatewayPublishServerParams,
     type GatewayUnpublishServerParams as GatewayUnpublishServerParams,
     type GatewayUpdateServerParams as GatewayUpdateServerParams,
+  };
+
+  export {
+    Skills as Skills,
+    type Skill as Skill,
+    type SkillCreate as SkillCreate,
+    type SkillUpdate as SkillUpdate,
+    type SkillCreateResponse as SkillCreateResponse,
+    type SkillRetrieveResponse as SkillRetrieveResponse,
+    type SkillUpdateResponse as SkillUpdateResponse,
+    type SkillDeleteResponse as SkillDeleteResponse,
+    type SkillRetrieveBySlugResponse as SkillRetrieveBySlugResponse,
+    type SkillsSkillCursorPage as SkillsSkillCursorPage,
+    type SkillCreateParams as SkillCreateParams,
+    type SkillUpdateParams as SkillUpdateParams,
+    type SkillListParams as SkillListParams,
+    type SkillRetrieveBySlugParams as SkillRetrieveBySlugParams,
   };
 
   export type AgentPlatform = API.AgentPlatform;

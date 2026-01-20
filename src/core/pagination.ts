@@ -228,3 +228,64 @@ export class AgentCursorPage<Item> extends AbstractPage<Item> implements AgentCu
     };
   }
 }
+
+export interface SkillCursorPageResponse<Item> {
+  skills: Array<Item>;
+
+  /**
+   * Next page cursor
+   */
+  next: string | null;
+}
+
+export interface SkillCursorPageParams {
+  /**
+   * Cursor for pagination
+   */
+  cursor?: string;
+
+  /**
+   * Maximum number of skills to return
+   */
+  limit?: number;
+}
+
+export class SkillCursorPage<Item> extends AbstractPage<Item> implements SkillCursorPageResponse<Item> {
+  skills: Array<Item>;
+
+  /**
+   * Next page cursor
+   */
+  next: string | null;
+
+  constructor(
+    client: McpStoreClient,
+    response: Response,
+    body: SkillCursorPageResponse<Item>,
+    options: FinalRequestOptions,
+  ) {
+    super(client, response, body, options);
+
+    this.skills = body.skills || [];
+    this.next = body.next || null;
+  }
+
+  getPaginatedItems(): Item[] {
+    return this.skills ?? [];
+  }
+
+  nextPageRequestOptions(): PageRequestOptions | null {
+    const cursor = this.next;
+    if (!cursor) {
+      return null;
+    }
+
+    return {
+      ...this.options,
+      query: {
+        ...maybeObj(this.options.query),
+        cursor,
+      },
+    };
+  }
+}
