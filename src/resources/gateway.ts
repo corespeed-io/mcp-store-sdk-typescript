@@ -22,27 +22,24 @@ export class Gateway extends APIResource {
    * Remove an MCP server from the store. Requires gateway service token.
    */
   unpublishServer(
-    pathPackageName: string,
+    packageName: string,
     params: GatewayUnpublishServerParams,
     options?: RequestOptions,
   ): APIPromise<GatewayUnpublishServerResponse> {
-    const { path_scope } = params;
-    return this._client.delete(path`/api/v1/gateway/servers/${path_scope}/${pathPackageName}`, options);
+    const { scope } = params;
+    return this._client.delete(path`/api/v1/gateway/servers/${scope}/${packageName}`, options);
   }
 
   /**
    * Update an existing MCP server from the gateway. Requires gateway service token.
    */
   updateServer(
-    pathPackageName: string,
+    packageName: string,
     params: GatewayUpdateServerParams,
     options?: RequestOptions,
   ): APIPromise<GatewayUpdateServerResponse> {
-    const { path_scope, ...body } = params;
-    return this._client.put(path`/api/v1/gateway/servers/${path_scope}/${pathPackageName}`, {
-      body,
-      ...options,
-    });
+    const { scope, ...body } = params;
+    return this._client.put(path`/api/v1/gateway/servers/${scope}/${packageName}`, { body, ...options });
   }
 }
 
@@ -93,7 +90,7 @@ export interface GatewayUnpublishServerParams {
    * The scope of the MCP server (e.g., '@modelcontextprotocol', 'github'). The @
    * symbol is optional.
    */
-  path_scope: string;
+  scope: string;
 }
 
 export interface GatewayUpdateServerParams {
@@ -101,7 +98,7 @@ export interface GatewayUpdateServerParams {
    * Path param: The scope of the MCP server (e.g., '@modelcontextprotocol',
    * 'github'). The @ symbol is optional.
    */
-  path_scope: string;
+  scope: string;
 
   /**
    * Body param

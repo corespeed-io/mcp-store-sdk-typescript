@@ -292,7 +292,7 @@ describe('resource servers', () => {
   // Prism tests are disabled
   test.skip('retrieveByPackage: only required params', async () => {
     const responsePromise = client.servers.retrieveByPackage('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -306,7 +306,7 @@ describe('resource servers', () => {
   // Prism tests are disabled
   test.skip('retrieveByPackage: required and optional params', async () => {
     const response = await client.servers.retrieveByPackage('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
     });
   });
 });

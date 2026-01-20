@@ -130,7 +130,7 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: only required params', async () => {
-    const responsePromise = client.agents.retrieveBySlug('assistant', { path_scope: '@corespeed' });
+    const responsePromise = client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -142,6 +142,6 @@ describe('resource agents', () => {
 
   // Prism tests are disabled
   test.skip('retrieveBySlug: required and optional params', async () => {
-    const response = await client.agents.retrieveBySlug('assistant', { path_scope: '@corespeed' });
+    const response = await client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
   });
 });

@@ -125,7 +125,7 @@ describe('resource gateway', () => {
   // Prism tests are disabled
   test.skip('unpublishServer: only required params', async () => {
     const responsePromise = client.gateway.unpublishServer('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -139,15 +139,13 @@ describe('resource gateway', () => {
   // Prism tests are disabled
   test.skip('unpublishServer: required and optional params', async () => {
     const response = await client.gateway.unpublishServer('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
     });
   });
 
   // Prism tests are disabled
   test.skip('updateServer: only required params', async () => {
-    const responsePromise = client.gateway.updateServer('server-github', {
-      path_scope: '@modelcontextprotocol',
-    });
+    const responsePromise = client.gateway.updateServer('server-github', { scope: '@modelcontextprotocol' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -160,7 +158,7 @@ describe('resource gateway', () => {
   // Prism tests are disabled
   test.skip('updateServer: required and optional params', async () => {
     const response = await client.gateway.updateServer('server-github', {
-      path_scope: '@modelcontextprotocol',
+      scope: '@modelcontextprotocol',
       author: 'author',
       category: 'category',
       description: 'description',

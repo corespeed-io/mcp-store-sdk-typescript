@@ -59,12 +59,12 @@ export class Agents extends APIResource {
    * Retrieve detailed information about a specific agent using its scope and slug
    */
   retrieveBySlug(
-    pathSlug: string,
+    slug: string,
     params: AgentRetrieveBySlugParams,
     options?: RequestOptions,
   ): APIPromise<AgentRetrieveBySlugResponse> {
-    const { path_scope } = params;
-    return this._client.get(path`/api/v1/agents/${path_scope}/${pathSlug}`, options);
+    const { scope } = params;
+    return this._client.get(path`/api/v1/agents/${scope}/${slug}`, options);
   }
 }
 
@@ -212,7 +212,7 @@ export interface AgentRetrieveBySlugParams {
   /**
    * The scope of the agent (e.g., '@corespeed', 'openai'). The @ symbol is optional.
    */
-  path_scope: string;
+  scope: string;
 }
 
 export declare namespace Agents {

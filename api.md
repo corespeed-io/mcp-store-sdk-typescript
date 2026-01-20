@@ -61,7 +61,7 @@ Methods:
 - <code title="put /api/v1/servers/{id}">client.servers.<a href="./src/resources/servers.ts">update</a>(id, { ...params }) -> ServerUpdateResponse</code>
 - <code title="get /api/v1/servers">client.servers.<a href="./src/resources/servers.ts">list</a>({ ...params }) -> ServersCursorPage</code>
 - <code title="delete /api/v1/servers/{id}">client.servers.<a href="./src/resources/servers.ts">delete</a>(id) -> ServerDeleteResponse</code>
-- <code title="get /api/v1/servers/{scope}/{packageName}">client.servers.<a href="./src/resources/servers.ts">retrieveByPackage</a>(pathPackageName, { ...params }) -> ServerRetrieveByPackageResponse</code>
+- <code title="get /api/v1/servers/{scope}/{packageName}">client.servers.<a href="./src/resources/servers.ts">retrieveByPackage</a>(packageName, { ...params }) -> ServerRetrieveByPackageResponse</code>
 
 # Agents
 
@@ -83,7 +83,7 @@ Methods:
 - <code title="put /api/v1/agents/{id}">client.agents.<a href="./src/resources/agents.ts">update</a>(id, { ...params }) -> AgentUpdateResponse</code>
 - <code title="get /api/v1/agents">client.agents.<a href="./src/resources/agents.ts">list</a>({ ...params }) -> AgentsAgentCursorPage</code>
 - <code title="delete /api/v1/agents/{id}">client.agents.<a href="./src/resources/agents.ts">delete</a>(id) -> AgentDeleteResponse</code>
-- <code title="get /api/v1/agents/{scope}/{slug}">client.agents.<a href="./src/resources/agents.ts">retrieveBySlug</a>(pathSlug, { ...params }) -> AgentRetrieveBySlugResponse</code>
+- <code title="get /api/v1/agents/{scope}/{slug}">client.agents.<a href="./src/resources/agents.ts">retrieveBySlug</a>(slug, { ...params }) -> AgentRetrieveBySlugResponse</code>
 
 # Gateway
 
@@ -96,8 +96,8 @@ Types:
 Methods:
 
 - <code title="post /api/v1/gateway/servers">client.gateway.<a href="./src/resources/gateway.ts">publishServer</a>({ ...params }) -> GatewayPublishServerResponse</code>
-- <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(pathPackageName, { ...params }) -> GatewayUnpublishServerResponse</code>
-- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(pathPackageName, { ...params }) -> GatewayUpdateServerResponse</code>
+- <code title="delete /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">unpublishServer</a>(packageName, { ...params }) -> GatewayUnpublishServerResponse</code>
+- <code title="put /api/v1/gateway/servers/{scope}/{packageName}">client.gateway.<a href="./src/resources/gateway.ts">updateServer</a>(packageName, { ...params }) -> GatewayUpdateServerResponse</code>
 
 # Skills
 
