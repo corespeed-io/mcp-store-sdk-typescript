@@ -38,7 +38,9 @@ Types:
 Methods:
 
 - <code title="get /api/v1/me">client.me.<a href="./src/resources/me.ts">retrieve</a>() -> MeResponse</code>
+- <code title="get /api/v1/me/agents">client.me.<a href="./src/resources/me.ts">listAgents</a>({ ...params }) -> AgentsAgentCursorPage</code>
 - <code title="get /api/v1/me/servers">client.me.<a href="./src/resources/me.ts">listServers</a>({ ...params }) -> ServersCursorPage</code>
+- <code title="get /api/v1/me/skills">client.me.<a href="./src/resources/me.ts">listSkills</a>({ ...params }) -> SkillsSkillCursorPage</code>
 
 # Servers
 

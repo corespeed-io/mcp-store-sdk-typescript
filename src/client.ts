@@ -57,7 +57,7 @@ import {
   GatewayUpdateServerResponse,
 } from './resources/gateway';
 import { Health, HealthCheckResponse } from './resources/health';
-import { Me, MeListServersParams, MeResponse } from './resources/me';
+import { Me, MeListAgentsParams, MeListServersParams, MeListSkillsParams, MeResponse } from './resources/me';
 import {
   Server,
   ServerCreate,
@@ -874,7 +874,13 @@ export declare namespace McpStoreClient {
     type DocumentationProxyParams as DocumentationProxyParams,
   };
 
-  export { Me as Me, type MeResponse as MeResponse, type MeListServersParams as MeListServersParams };
+  export {
+    Me as Me,
+    type MeResponse as MeResponse,
+    type MeListAgentsParams as MeListAgentsParams,
+    type MeListServersParams as MeListServersParams,
+    type MeListSkillsParams as MeListSkillsParams,
+  };
 
   export {
     Servers as Servers,

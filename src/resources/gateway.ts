@@ -64,8 +64,6 @@ export interface GatewayPublishServerParams {
 
   scope: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
@@ -83,6 +81,8 @@ export interface GatewayPublishServerParams {
   repository?: Shared.Repository | null;
 
   tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface GatewayUnpublishServerParams {
@@ -118,12 +118,12 @@ export interface GatewayUpdateServerParams {
   /**
    * Body param
    */
-  displayName?: string;
+  detailedDescription?: string;
 
   /**
    * Body param
    */
-  documentationUrl?: string;
+  displayName?: string;
 
   /**
    * Body param: External icon URL. If provided, the server will fetch the icon from

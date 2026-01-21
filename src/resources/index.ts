@@ -32,7 +32,13 @@ export {
   type GatewayUpdateServerParams,
 } from './gateway';
 export { Health, type HealthCheckResponse } from './health';
-export { Me, type MeResponse, type MeListServersParams } from './me';
+export {
+  Me,
+  type MeResponse,
+  type MeListAgentsParams,
+  type MeListServersParams,
+  type MeListSkillsParams,
+} from './me';
 export {
   Servers,
   type Server,

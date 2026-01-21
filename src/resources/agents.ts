@@ -91,6 +91,8 @@ export interface Agent {
 
   createdAt?: string;
 
+  developerId?: string;
+
   iconUrl?: string;
 
   tags?: Array<string>;
