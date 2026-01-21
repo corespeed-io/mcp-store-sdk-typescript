@@ -21,6 +21,35 @@ describe('resource me', () => {
   });
 
   // Prism tests are disabled
+  test.skip('listAgents', async () => {
+    const responsePromise = client.me.listAgents();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('listAgents: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.me.listAgents(
+        {
+          cursor:
+            'eyJzb3J0RmllbGQiOiJ1cGRhdGVkQXQiLCJzb3J0VmFsdWUiOiIyMDI1LTAxLTAxVDEyOjAwOjAwWiIsImxhc3RJZCI6IjEyMzQ1In0=',
+          limit: 0,
+          search: 'assistant',
+          sort: 'updatedAt',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(McpStoreClient.NotFoundError);
+  });
+
+  // Prism tests are disabled
   test.skip('listServers', async () => {
     const responsePromise = client.me.listServers();
     const rawResponse = await responsePromise.asResponse();
@@ -43,6 +72,36 @@ describe('resource me', () => {
           limit: 0,
           search: 'github',
           sort: 'updatedAt',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(McpStoreClient.NotFoundError);
+  });
+
+  // Prism tests are disabled
+  test.skip('listSkills', async () => {
+    const responsePromise = client.me.listSkills();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('listSkills: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.me.listSkills(
+        {
+          cursor: 'cursor',
+          limit: 0,
+          scope: 'superpowers',
+          search: 'debugging',
+          sort: 'updatedAt',
+          tag: 'development',
         },
         { path: '/_stainless_unknown_path' },
       ),

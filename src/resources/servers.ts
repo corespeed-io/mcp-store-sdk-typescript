@@ -84,17 +84,15 @@ export interface Server {
 
   updatedAt: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
 
   createdAt?: string;
 
-  developerId?: string;
+  detailedDescription?: string;
 
-  documentationUrl?: string;
+  developerId?: string;
 
   iconUrl?: string;
 
@@ -103,6 +101,8 @@ export interface Server {
   source?: 'gateway' | 'api' | 'seed';
 
   tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface ServerCreate {
@@ -113,8 +113,6 @@ export interface ServerCreate {
   packageName: string;
 
   scope: string;
-
-  version: string;
 
   author?: string;
 
@@ -133,6 +131,8 @@ export interface ServerCreate {
   repository?: Shared.Repository | null;
 
   tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface ServerDetail {
@@ -148,17 +148,15 @@ export interface ServerDetail {
 
   updatedAt: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
 
   createdAt?: string;
 
-  developerId?: string;
+  detailedDescription?: string;
 
-  documentationUrl?: string;
+  developerId?: string;
 
   iconUrl?: string;
 
@@ -171,6 +169,8 @@ export interface ServerDetail {
   source?: 'gateway' | 'api' | 'seed';
 
   tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface ServerUpdate {
@@ -180,9 +180,9 @@ export interface ServerUpdate {
 
   description?: string;
 
-  displayName?: string;
+  detailedDescription?: string;
 
-  documentationUrl?: string;
+  displayName?: string;
 
   /**
    * External icon URL. If provided, the server will fetch the icon from this URL,
@@ -231,8 +231,6 @@ export interface ServerCreateParams {
 
   scope: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
@@ -250,6 +248,8 @@ export interface ServerCreateParams {
   repository?: Shared.Repository | null;
 
   tags?: Array<string>;
+
+  version?: string;
 }
 
 export interface ServerUpdateParams {
@@ -259,9 +259,9 @@ export interface ServerUpdateParams {
 
   description?: string;
 
-  displayName?: string;
+  detailedDescription?: string;
 
-  documentationUrl?: string;
+  displayName?: string;
 
   /**
    * External icon URL. If provided, the server will fetch the icon from this URL,

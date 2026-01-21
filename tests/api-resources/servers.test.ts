@@ -15,7 +15,6 @@ describe('resource servers', () => {
       displayName: 'displayName',
       packageName: 'packageName',
       scope: 'scope',
-      version: 'version',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -33,7 +32,6 @@ describe('resource servers', () => {
       displayName: 'displayName',
       packageName: 'packageName',
       scope: 'scope',
-      version: 'version',
       author: 'author',
       category: 'category',
       iconUrl: 'https://example.com',
@@ -119,6 +117,7 @@ describe('resource servers', () => {
       ],
       repository: { source: 'source', url: 'https://example.com' },
       tags: ['string'],
+      version: 'version',
     });
   });
 
@@ -156,8 +155,8 @@ describe('resource servers', () => {
           author: 'author',
           category: 'category',
           description: 'description',
+          detailedDescription: 'detailedDescription',
           displayName: 'displayName',
-          documentationUrl: 'https://example.com',
           iconUrl: 'https://example.com',
           packages: [
             {
