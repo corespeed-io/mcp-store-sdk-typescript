@@ -68,6 +68,8 @@ export interface GatewayPublishServerParams {
 
   category?: string;
 
+  detailedDescription?: string;
+
   /**
    * External icon URL. The server will fetch the icon from this URL and upload it to
    * R2 storage. The response will contain the R2 URL.
