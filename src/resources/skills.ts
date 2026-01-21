@@ -79,8 +79,6 @@ export interface Skill {
 
   updatedAt: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
@@ -89,9 +87,13 @@ export interface Skill {
 
   dependencies?: Array<string>;
 
+  developerId?: string;
+
   tags?: Array<string>;
 
   triggerConditions?: Array<string>;
+
+  version?: string;
 }
 
 export interface SkillCreate {
@@ -105,8 +107,6 @@ export interface SkillCreate {
 
   sourceUrl: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
@@ -116,6 +116,8 @@ export interface SkillCreate {
   tags?: Array<string>;
 
   triggerConditions?: Array<string>;
+
+  version?: string;
 }
 
 export interface SkillUpdate {
@@ -173,8 +175,6 @@ export interface SkillCreateParams {
 
   sourceUrl: string;
 
-  version: string;
-
   author?: string;
 
   category?: string;
@@ -184,6 +184,8 @@ export interface SkillCreateParams {
   tags?: Array<string>;
 
   triggerConditions?: Array<string>;
+
+  version?: string;
 }
 
 export interface SkillUpdateParams {

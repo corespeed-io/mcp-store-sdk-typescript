@@ -16,7 +16,6 @@ describe('resource skills', () => {
       scope: 'scope',
       slug: 'slug',
       sourceUrl: 'https://example.com',
-      version: 'version',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -35,12 +34,12 @@ describe('resource skills', () => {
       scope: 'scope',
       slug: 'slug',
       sourceUrl: 'https://example.com',
-      version: 'version',
       author: 'author',
       category: 'category',
       dependencies: ['string'],
       tags: ['string'],
       triggerConditions: ['string'],
+      version: 'version',
     });
   });
 
