@@ -34,6 +34,7 @@ describe('resource servers', () => {
       scope: 'scope',
       author: 'author',
       category: 'category',
+      detailedDescription: 'detailedDescription',
       iconUrl: 'https://example.com',
       packages: [
         {
