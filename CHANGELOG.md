@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.1 (2026-01-24)
+
+Full Changelog: [v1.16.0...v1.16.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.16.0...v1.16.1)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([db4eb13](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/db4eb136c6ba738dc02d83a77a485521295d156e))
+
 ## 1.16.0 (2026-01-21)
 
 Full Changelog: [v1.15.0...v1.16.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.15.0...v1.16.0)
