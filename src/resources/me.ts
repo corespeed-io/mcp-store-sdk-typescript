@@ -109,7 +109,7 @@ export interface MeListSkillsParams extends SkillCursorPageParams {
   search?: string;
 
   /**
-   * Sort by 'displayName' or 'updatedAt' (default)
+   * Sort by 'skillName' or 'updatedAt' (default)
    */
   sort?: string;
 
