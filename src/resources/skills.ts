@@ -50,15 +50,15 @@ export class Skills extends APIResource {
   }
 
   /**
-   * Returns a single skill by its scope and slug
+   * Returns a single skill by its scope, repository name, and skill name
    */
-  retrieveBySlug(
-    slug: string,
-    params: SkillRetrieveBySlugParams,
+  retrieveByIdentifier(
+    skillName: string,
+    params: SkillRetrieveByIdentifierParams,
     options?: RequestOptions,
-  ): APIPromise<SkillRetrieveBySlugResponse> {
-    const { scope } = params;
-    return this._client.get(path`/api/v1/skills/${scope}/${slug}`, options);
+  ): APIPromise<SkillRetrieveByIdentifierResponse> {
+    const { scope, repoName } = params;
+    return this._client.get(path`/api/v1/skills/${scope}/${repoName}/${skillName}`, options);
   }
 }
 
@@ -69,11 +69,11 @@ export interface Skill {
 
   description: string;
 
-  displayName: string;
+  repoName: string;
 
   scope: string;
 
-  slug: string;
+  skillName: string;
 
   sourceUrl: string;
 
@@ -91,6 +91,8 @@ export interface Skill {
 
   tags?: Array<string>;
 
+  totalInstalls?: number;
+
   triggerConditions?: Array<string>;
 
   version?: string;
@@ -99,11 +101,11 @@ export interface Skill {
 export interface SkillCreate {
   description: string;
 
-  displayName: string;
+  repoName: string;
 
   scope: string;
 
-  slug: string;
+  skillName: string;
 
   sourceUrl: string;
 
@@ -129,11 +131,11 @@ export interface SkillUpdate {
 
   description?: string;
 
-  displayName?: string;
+  repoName?: string;
 
   scope?: string;
 
-  slug?: string;
+  skillName?: string;
 
   sourceUrl?: string;
 
@@ -160,18 +162,18 @@ export interface SkillDeleteResponse {
   message: string;
 }
 
-export interface SkillRetrieveBySlugResponse {
+export interface SkillRetrieveByIdentifierResponse {
   skill: Skill;
 }
 
 export interface SkillCreateParams {
   description: string;
 
-  displayName: string;
+  repoName: string;
 
   scope: string;
 
-  slug: string;
+  skillName: string;
 
   sourceUrl: string;
 
@@ -197,11 +199,11 @@ export interface SkillUpdateParams {
 
   description?: string;
 
-  displayName?: string;
+  repoName?: string;
 
   scope?: string;
 
-  slug?: string;
+  skillName?: string;
 
   sourceUrl?: string;
 
@@ -224,7 +226,7 @@ export interface SkillListParams extends SkillCursorPageParams {
   search?: string;
 
   /**
-   * Sort by 'displayName' or 'updatedAt' (default)
+   * Sort by 'skillName' or 'updatedAt' (default)
    */
   sort?: string;
 
@@ -234,11 +236,16 @@ export interface SkillListParams extends SkillCursorPageParams {
   tag?: string;
 }
 
-export interface SkillRetrieveBySlugParams {
+export interface SkillRetrieveByIdentifierParams {
   /**
    * The scope of the skill (publisher namespace)
    */
   scope: string;
+
+  /**
+   * The repository name
+   */
+  repoName: string;
 }
 
 export declare namespace Skills {
@@ -250,11 +257,11 @@ export declare namespace Skills {
     type SkillRetrieveResponse as SkillRetrieveResponse,
     type SkillUpdateResponse as SkillUpdateResponse,
     type SkillDeleteResponse as SkillDeleteResponse,
-    type SkillRetrieveBySlugResponse as SkillRetrieveBySlugResponse,
+    type SkillRetrieveByIdentifierResponse as SkillRetrieveByIdentifierResponse,
     type SkillsSkillCursorPage as SkillsSkillCursorPage,
     type SkillCreateParams as SkillCreateParams,
     type SkillUpdateParams as SkillUpdateParams,
     type SkillListParams as SkillListParams,
-    type SkillRetrieveBySlugParams as SkillRetrieveBySlugParams,
+    type SkillRetrieveByIdentifierParams as SkillRetrieveByIdentifierParams,
   };
 }

@@ -12,9 +12,9 @@ describe('resource skills', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.skills.create({
       description: 'description',
-      displayName: 'displayName',
+      repoName: 'repoName',
       scope: 'scope',
-      slug: 'slug',
+      skillName: 'skillName',
       sourceUrl: 'https://example.com',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -30,9 +30,9 @@ describe('resource skills', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.skills.create({
       description: 'description',
-      displayName: 'displayName',
+      repoName: 'repoName',
       scope: 'scope',
-      slug: 'slug',
+      skillName: 'skillName',
       sourceUrl: 'https://example.com',
       author: 'author',
       category: 'category',
@@ -78,9 +78,9 @@ describe('resource skills', () => {
           category: 'category',
           dependencies: ['string'],
           description: 'description',
-          displayName: 'displayName',
+          repoName: 'repoName',
           scope: 'scope',
-          slug: 'slug',
+          skillName: 'skillName',
           sourceUrl: 'https://example.com',
           tags: ['string'],
           triggerConditions: ['string'],
@@ -134,8 +134,11 @@ describe('resource skills', () => {
   });
 
   // Prism tests are disabled
-  test.skip('retrieveBySlug: only required params', async () => {
-    const responsePromise = client.skills.retrieveBySlug('brainstorming', { scope: 'superpowers' });
+  test.skip('retrieveByIdentifier: only required params', async () => {
+    const responsePromise = client.skills.retrieveByIdentifier('brainstorming', {
+      scope: 'superpowers',
+      repoName: 'claude-skills',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -146,7 +149,10 @@ describe('resource skills', () => {
   });
 
   // Prism tests are disabled
-  test.skip('retrieveBySlug: required and optional params', async () => {
-    const response = await client.skills.retrieveBySlug('brainstorming', { scope: 'superpowers' });
+  test.skip('retrieveByIdentifier: required and optional params', async () => {
+    const response = await client.skills.retrieveByIdentifier('brainstorming', {
+      scope: 'superpowers',
+      repoName: 'claude-skills',
+    });
   });
 });

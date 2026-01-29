@@ -65,10 +65,10 @@ export {
   type SkillRetrieveResponse,
   type SkillUpdateResponse,
   type SkillDeleteResponse,
-  type SkillRetrieveBySlugResponse,
+  type SkillRetrieveByIdentifierResponse,
   type SkillCreateParams,
   type SkillUpdateParams,
   type SkillListParams,
-  type SkillRetrieveBySlugParams,
+  type SkillRetrieveByIdentifierParams,
   type SkillsSkillCursorPage,
 } from './skills';

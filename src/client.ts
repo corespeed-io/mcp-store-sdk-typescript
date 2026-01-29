@@ -82,8 +82,8 @@ import {
   SkillCreateResponse,
   SkillDeleteResponse,
   SkillListParams,
-  SkillRetrieveBySlugParams,
-  SkillRetrieveBySlugResponse,
+  SkillRetrieveByIdentifierParams,
+  SkillRetrieveByIdentifierResponse,
   SkillRetrieveResponse,
   SkillUpdate,
   SkillUpdateParams,
@@ -936,12 +936,12 @@ export declare namespace McpStoreClient {
     type SkillRetrieveResponse as SkillRetrieveResponse,
     type SkillUpdateResponse as SkillUpdateResponse,
     type SkillDeleteResponse as SkillDeleteResponse,
-    type SkillRetrieveBySlugResponse as SkillRetrieveBySlugResponse,
+    type SkillRetrieveByIdentifierResponse as SkillRetrieveByIdentifierResponse,
     type SkillsSkillCursorPage as SkillsSkillCursorPage,
     type SkillCreateParams as SkillCreateParams,
     type SkillUpdateParams as SkillUpdateParams,
     type SkillListParams as SkillListParams,
-    type SkillRetrieveBySlugParams as SkillRetrieveBySlugParams,
+    type SkillRetrieveByIdentifierParams as SkillRetrieveByIdentifierParams,
   };
 
   export type AgentPlatform = API.AgentPlatform;

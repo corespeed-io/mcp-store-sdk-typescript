@@ -112,7 +112,7 @@ Types:
 - <code><a href="./src/resources/skills.ts">SkillRetrieveResponse</a></code>
 - <code><a href="./src/resources/skills.ts">SkillUpdateResponse</a></code>
 - <code><a href="./src/resources/skills.ts">SkillDeleteResponse</a></code>
-- <code><a href="./src/resources/skills.ts">SkillRetrieveBySlugResponse</a></code>
+- <code><a href="./src/resources/skills.ts">SkillRetrieveByIdentifierResponse</a></code>
 
 Methods:
 
@@ -121,4 +121,4 @@ Methods:
 - <code title="put /api/v1/skills/{id}">client.skills.<a href="./src/resources/skills.ts">update</a>(id, { ...params }) -> SkillUpdateResponse</code>
 - <code title="get /api/v1/skills">client.skills.<a href="./src/resources/skills.ts">list</a>({ ...params }) -> SkillsSkillCursorPage</code>
 - <code title="delete /api/v1/skills/{id}">client.skills.<a href="./src/resources/skills.ts">delete</a>(id) -> SkillDeleteResponse</code>
-- <code title="get /api/v1/skills/{scope}/{slug}">client.skills.<a href="./src/resources/skills.ts">retrieveBySlug</a>(slug, { ...params }) -> SkillRetrieveBySlugResponse</code>
+- <code title="get /api/v1/skills/{scope}/{repoName}/{skillName}">client.skills.<a href="./src/resources/skills.ts">retrieveByIdentifier</a>(skillName, { ...params }) -> SkillRetrieveByIdentifierResponse</code>
