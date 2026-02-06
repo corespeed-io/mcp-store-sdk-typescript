@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.17.1 (2026-02-06)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.17.0...v1.17.1)
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([430dd5a](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/430dd5a45f551d6f508e07cf370dba64ffecc063))
+* **client:** avoid removing abort listener too early ([e4fab5e](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/e4fab5ed759b310c410db7f52efe8fe11f51df1b))
+
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([33a862e](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/33a862e92b42775880f6c6e0401d7c9b567f6301))
+* **client:** restructure abort controller binding ([05c0728](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/05c0728ca65fe669328303692c267d2bdeaa20cd))
+* **internal:** fix pagination internals not accepting option promises ([792d853](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/792d853a9452185ab453873a3948510779866432))
+* **internal:** upgrade pnpm ([bc24005](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/bc2400566ca18ef61b0e8b16573183b5a9c111d4))
+
 ## 1.17.0 (2026-01-29)
 
 Full Changelog: [v1.16.0...v1.17.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.16.0...v1.17.0)
