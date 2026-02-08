@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.18.0 (2026-02-08)
+
+Full Changelog: [v1.17.1...v1.18.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.17.1...v1.18.0)
+
+### Features
+
+* **api:** update default api url ([0d0d02d](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/0d0d02d0ead36b0546e9a4ef949d0e4421d1e8d3))
+* **api:** update default production env ([6a2d39d](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/6a2d39d4442fad6f4bf7bcb877898073df5e608a))
+
 ## 1.17.1 (2026-02-06)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.17.0...v1.17.1)
