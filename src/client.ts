@@ -106,7 +106,7 @@ import { isEmptyObj } from './internal/utils/values';
 
 const environments = {
   production: 'https://api.corespeed.ai',
-  development: 'http://localhost:8000',
+  development: 'https://api.mcp.c7d.dev',
 };
 type Environment = keyof typeof environments;
 
@@ -121,7 +121,7 @@ export interface ClientOptions {
    *
    * Each environment maps to a different base URL:
    * - `production` corresponds to `https://api.corespeed.ai`
-   * - `development` corresponds to `http://localhost:8000`
+   * - `development` corresponds to `https://api.mcp.c7d.dev`
    */
   environment?: Environment | undefined;
 
