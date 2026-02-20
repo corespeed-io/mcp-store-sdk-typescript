@@ -8,7 +8,7 @@ const client = new McpStoreClient({
 });
 
 describe('resource agents', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.agents.create({
       agent: { platform: 'agent0', url: 'https://agent0.example.com/agents/abc123' },
@@ -26,7 +26,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.agents.create({
       agent: { platform: 'agent0', url: 'https://agent0.example.com/agents/abc123' },
@@ -41,7 +41,7 @@ describe('resource agents', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.agents.retrieve('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -53,7 +53,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.agents.update('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -65,7 +65,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -87,7 +87,7 @@ describe('resource agents', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.agents.list();
     const rawResponse = await responsePromise.asResponse();
@@ -99,7 +99,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -116,7 +116,7 @@ describe('resource agents', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.agents.delete('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -128,7 +128,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveBySlug: only required params', async () => {
     const responsePromise = client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
     const rawResponse = await responsePromise.asResponse();
@@ -140,7 +140,7 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveBySlug: required and optional params', async () => {
     const response = await client.agents.retrieveBySlug('assistant', { scope: '@corespeed' });
   });
