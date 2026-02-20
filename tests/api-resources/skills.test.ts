@@ -8,7 +8,7 @@ const client = new McpStoreClient({
 });
 
 describe('resource skills', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.skills.create({
       description: 'description',
@@ -26,7 +26,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.skills.create({
       description: 'description',
@@ -43,7 +43,7 @@ describe('resource skills', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.skills.retrieve('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -55,7 +55,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.skills.update('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +67,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -91,7 +91,7 @@ describe('resource skills', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.skills.list();
     const rawResponse = await responsePromise.asResponse();
@@ -103,7 +103,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -121,7 +121,7 @@ describe('resource skills', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.skills.delete('12345');
     const rawResponse = await responsePromise.asResponse();
@@ -133,7 +133,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveByIdentifier: only required params', async () => {
     const responsePromise = client.skills.retrieveByIdentifier('brainstorming', {
       scope: 'superpowers',
@@ -148,7 +148,7 @@ describe('resource skills', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveByIdentifier: required and optional params', async () => {
     const response = await client.skills.retrieveByIdentifier('brainstorming', {
       scope: 'superpowers',

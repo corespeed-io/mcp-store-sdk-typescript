@@ -8,7 +8,7 @@ const client = new McpStoreClient({
 });
 
 describe('resource gateway', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('publishServer: only required params', async () => {
     const responsePromise = client.gateway.publishServer({
       description: 'description',
@@ -25,7 +25,7 @@ describe('resource gateway', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('publishServer: required and optional params', async () => {
     const response = await client.gateway.publishServer({
       description: 'description',
@@ -122,7 +122,7 @@ describe('resource gateway', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('unpublishServer: only required params', async () => {
     const responsePromise = client.gateway.unpublishServer('server-github', {
       scope: '@modelcontextprotocol',
@@ -136,14 +136,14 @@ describe('resource gateway', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('unpublishServer: required and optional params', async () => {
     const response = await client.gateway.unpublishServer('server-github', {
       scope: '@modelcontextprotocol',
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateServer: only required params', async () => {
     const responsePromise = client.gateway.updateServer('server-github', { scope: '@modelcontextprotocol' });
     const rawResponse = await responsePromise.asResponse();
@@ -155,7 +155,7 @@ describe('resource gateway', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateServer: required and optional params', async () => {
     const response = await client.gateway.updateServer('server-github', {
       scope: '@modelcontextprotocol',
