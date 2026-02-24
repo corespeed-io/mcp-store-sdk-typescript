@@ -60,7 +60,7 @@ $ yarn link @corespeed/mcp-store-client
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @corespeed/mcp-store-client
+$ pnpm link --global @corespeed/mcp-store-client
 ```
 
 ## Running tests
