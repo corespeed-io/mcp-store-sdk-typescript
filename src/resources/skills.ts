@@ -6,6 +6,9 @@ import { PagePromise, SkillCursorPage, type SkillCursorPageParams } from '../cor
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Skill registry operations
+ */
 export class Skills extends APIResource {
   /**
    * Creates a new skill in the registry (admin only)

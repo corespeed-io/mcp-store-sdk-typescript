@@ -7,6 +7,9 @@ import { CursorPage, type CursorPageParams, PagePromise } from '../core/paginati
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * MCP server registry operations
+ */
 export class Servers extends APIResource {
   /**
    * Create a new MCP server. If iconUrl is provided, the server will fetch the icon
