@@ -7,6 +7,9 @@ import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Gateway publishing operations
+ */
 export class Gateway extends APIResource {
   /**
    * Publish a new MCP server from the gateway. Requires gateway service token.

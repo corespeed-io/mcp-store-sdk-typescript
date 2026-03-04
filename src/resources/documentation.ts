@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Documentation proxy endpoints
+ */
 export class Documentation extends APIResource {
   /**
    * Fetch and proxy documentation from external URLs to bypass CORS restrictions.

@@ -839,12 +839,33 @@ export class McpStoreClient {
 
   static toFile = Uploads.toFile;
 
+  /**
+   * API health and status endpoints
+   */
   health: API.Health = new API.Health(this);
+  /**
+   * Documentation proxy endpoints
+   */
   documentation: API.Documentation = new API.Documentation(this);
+  /**
+   * Current user operations
+   */
   me: API.Me = new API.Me(this);
+  /**
+   * MCP server registry operations
+   */
   servers: API.Servers = new API.Servers(this);
+  /**
+   * AI agent registry operations
+   */
   agents: API.Agents = new API.Agents(this);
+  /**
+   * Gateway publishing operations
+   */
   gateway: API.Gateway = new API.Gateway(this);
+  /**
+   * Skill registry operations
+   */
   skills: API.Skills = new API.Skills(this);
 }
 
