@@ -19,6 +19,9 @@ import {
 } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Current user operations
+ */
 export class Me extends APIResource {
   /**
    * Get information about the currently authenticated user

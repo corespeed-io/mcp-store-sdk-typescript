@@ -7,6 +7,9 @@ import { AgentCursorPage, type AgentCursorPageParams, PagePromise } from '../cor
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * AI agent registry operations
+ */
 export class Agents extends APIResource {
   /**
    * Create a new agent. If iconUrl is provided, the server will fetch the icon from

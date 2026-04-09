@@ -8,7 +8,7 @@ const client = new McpStoreClient({
 });
 
 describe('resource documentation', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('proxy: only required params', async () => {
     const responsePromise = client.documentation.proxy({
       url: 'https://github.com/owner/repo/blob/main/README.md',
@@ -22,7 +22,7 @@ describe('resource documentation', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('proxy: required and optional params', async () => {
     const response = await client.documentation.proxy({
       url: 'https://github.com/owner/repo/blob/main/README.md',

@@ -8,7 +8,7 @@ const client = new McpStoreClient({
 });
 
 describe('resource me', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.me.retrieve();
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource me', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listAgents', async () => {
     const responsePromise = client.me.listAgents();
     const rawResponse = await responsePromise.asResponse();
@@ -32,7 +32,7 @@ describe('resource me', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listAgents: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -49,7 +49,7 @@ describe('resource me', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listServers', async () => {
     const responsePromise = client.me.listServers();
     const rawResponse = await responsePromise.asResponse();
@@ -61,7 +61,7 @@ describe('resource me', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listServers: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -78,7 +78,7 @@ describe('resource me', () => {
     ).rejects.toThrow(McpStoreClient.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listSkills', async () => {
     const responsePromise = client.me.listSkills();
     const rawResponse = await responsePromise.asResponse();
@@ -90,7 +90,7 @@ describe('resource me', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listSkills: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
