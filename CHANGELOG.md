@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.18.1 (2026-04-09)
+
+Full Changelog: [v1.18.0...v1.18.1](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.18.0...v1.18.1)
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([2f504a6](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/2f504a6ad2ff1d72301f3c67e69cc6b75e7fc2af))
+* **docs/contributing:** correct pnpm link command ([977891a](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/977891acd6c719347edd44eb31696556db00f95b))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([1f91417](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/1f91417feca6a0fc891dd68c187afae17657799e))
+* **ci:** skip uploading artifacts on stainless-internal branches ([ec027e9](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/ec027e9ed5eaf760fce0a9c0be702fd8662f0f73))
+* **internal/client:** fix form-urlencoded requests ([d8c0b15](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/d8c0b1560e8373150e4f334cfa03467286332306))
+* **internal:** avoid type checking errors with ts-reset ([06faa21](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/06faa21ae52780dc8fbabf168eb4c844a8ffe59c))
+* **internal:** codegen related update ([77b243a](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/77b243ab41961aa4e0f7587de00e41e09fc02e51))
+* **internal:** codegen related update ([a182438](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/a18243832c6ef01b4c9fe430e0dd95cc42a94c70))
+* **internal:** codegen related update ([ca98774](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/ca98774e39efed9e6c5f727fb4b206f83daba10b))
+* **internal:** codegen related update ([c894c7b](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/c894c7b24739d38b6aff2e0c6f408d3742f4613f))
+* **internal:** codegen related update ([d796cc8](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/d796cc81801cce022487caa5528a1020f706f6ce))
+* **internal:** move stringifyQuery implementation to internal function ([4922ecb](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/4922ecb4e4a1510906c594ec82dc56381d281a4e))
+* **internal:** remove mock server code ([87f1efb](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/87f1efbb538b6856d3f57bdd721aa5d3aeeeee9a))
+* **internal:** tweak CI branches ([a3960d3](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/a3960d364e2829b336cccf14476e973e4ee82cac))
+* **internal:** update dependencies to address dependabot vulnerabilities ([7504e38](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/7504e3857b9d2d3aad13ca22a5be20e1de92ceb2))
+* **internal:** update gitignore ([5b92252](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/5b9225290e61cf93c57ef187cacd585d68e9869e))
+* **internal:** update lock file ([571ca27](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/571ca271d9c707bc6b5c9e573f3c60afa8036561))
+* **internal:** update lockfile ([eb6391f](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/eb6391fdcf433741d7af93e105bd085d1926a908))
+* **internal:** upgrade pnpm version ([1dee140](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/1dee14099a59bcc1a8da81ed466b6719b1fc0b02))
+* update mock server docs ([876a4a5](https://github.com/corespeed-io/mcp-store-sdk-typescript/commit/876a4a5fb596965151e000193da3645b5595035f))
+
 ## 1.18.0 (2026-02-08)
 
 Full Changelog: [v1.17.1...v1.18.0](https://github.com/corespeed-io/mcp-store-sdk-typescript/compare/v1.17.1...v1.18.0)
